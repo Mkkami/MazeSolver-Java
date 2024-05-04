@@ -15,9 +15,10 @@ import jdk.jfr.consumer.EventStream;
 
 import gui.elements.Menu;
 import gui.elements.MazeDisplay;
+import gui.elements.FileInfoPanel;
 import algorithms.MazeData;
 
-public class GUI {  //gridbaglayout
+public class GUI {
         //16:9
     private final int FRAMEWIDTH = 1600;
     private final int FRAMEHEIGHT = (int)FRAMEWIDTH/16 * 9;
@@ -28,6 +29,7 @@ public class GUI {  //gridbaglayout
     private Menu menu;
     private MazeDisplay mazeDisplay;
     private MazeData mazeData;
+    private FileInfoPanel fileInfo;
     
     public GUI() {
         try {
@@ -45,11 +47,11 @@ public class GUI {  //gridbaglayout
         frame.setLayout(new GridBagLayout());
         frame.setBackground(darkBackground);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         
         menu = new Menu();
         mazeData = new MazeData();
         mazeDisplay = new MazeDisplay(mazeData);
+        fileInfo = new FileInfoPanel();
         
         gbc = new GridBagConstraints();
         gbc.insets = new Insets(50, 50, 50, 50);
@@ -62,11 +64,17 @@ public class GUI {  //gridbaglayout
         gbc.weighty = 0.80;
         frame.add(menu.getPanel(), gbc);
         
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.weightx = 0.25;
+        gbc.weighty = 0.20;
+        frame.add(fileInfo.getFileInfoPanel(), gbc);
         
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
-        gbc.gridheight = 1;
+        gbc.gridheight = 2;
         gbc.weightx = 0.75;
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayPanel(), gbc);
@@ -78,6 +86,5 @@ public class GUI {  //gridbaglayout
     public static void main(String [] args) {
         GUI gui = new GUI();
         
-
     }
 }
