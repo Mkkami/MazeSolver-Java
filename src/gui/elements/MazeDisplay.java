@@ -8,7 +8,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import algorithms.MazeData;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
 public class MazeDisplay  {
@@ -30,7 +29,7 @@ public class MazeDisplay  {
         displayPanel.setPreferredSize(new Dimension(
                 rectSize*mazeData.getHeight(), rectSize*mazeData.getWidth()));
         displayScrollPane = new JScrollPane(displayPanel);
-        
+        displayScrollPane.setBorder(createBorder());
     }
     
     public void generateMazeDisplay(Graphics g) {
@@ -60,5 +59,15 @@ public class MazeDisplay  {
     
     public JScrollPane getDisplayPanel() {
         return displayScrollPane;
+    }
+    
+    private Border createBorder() {
+        Border border = BorderFactory.createLineBorder(Color.GRAY,
+                2, true);
+        Border insideBorder = BorderFactory.createLineBorder(
+                new Color(30, 30, 30),rectSize, true);
+        Border cBorder = BorderFactory.createCompoundBorder(border,
+                insideBorder);
+        return cBorder;
     }
 }

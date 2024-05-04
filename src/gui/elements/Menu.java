@@ -7,8 +7,6 @@ package gui.elements;
 import javax.swing.*;
 import java.awt.*;
 
-import gui.elements.SButton;
-
 public class Menu {
     private JPanel menuPanel;
     
