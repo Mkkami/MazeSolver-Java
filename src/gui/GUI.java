@@ -8,91 +8,73 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import jdk.jfr.consumer.EventStream;
 
-import algorithms.MazeFileReader;
-import java.io.FileNotFoundException;
-        
-public class GUI implements ActionListener {
+// https://www.javatpoint.com/java-gridbaglayout
+
+import gui.elements.Menu;
+import gui.elements.MazeDisplay;
+import algorithms.MazeData;
+
+public class GUI {  //gridbaglayout
+        //16:9
     private final int FRAMEWIDTH = 1600;
     private final int FRAMEHEIGHT = (int)FRAMEWIDTH/16 * 9;
+    private final Color FrameBackground = new Color(57, 46, 74);
     
-    private final int HEADERWIDTH = FRAMEWIDTH;
-    private final int HEADERHEIGHT = (int)(FRAMEHEIGHT*0.2);
+    private GridBagConstraints gbc;
     
-    private final int MAZEWIDTH = FRAMEWIDTH;
-    private final int MAZEHEIGHT = (int)(FRAMEHEIGHT*0.8);
+    private Menu menu;
+    private MazeDisplay mazeDisplay;
+    private MazeData mazeData;
     
-    private Header header = new Header();
-    private MazeDisplay mazePanel = new MazeDisplay();
-    private MazeFileReader mfr = new MazeFileReader();
-    
-    private File file;
-    
-    private int[] size;
-
     public GUI() {
         JFrame frame = new JFrame();
         frame.setSize(FRAMEWIDTH, FRAMEHEIGHT);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Maze Solver");
         frame.setResizable(false);
+        frame.setLayout(new GridBagLayout());
+        frame.setBackground(FrameBackground);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
         
-        JPanel mazeP = mazePanel.getPanel();
-        JPanel headerP = header.getPanel();
+        menu = new Menu();
+        mazeData = new MazeData();
+        mazeDisplay = new MazeDisplay(mazeData);
         
-        frame.setLayout(new BorderLayout());
+        gbc = new GridBagConstraints();
         
-        frame.add(headerP);
-        frame.add(mazeP);
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.BOTH;
         
-        header.fileButton.addActionListener(this);
-        header.displayButton.addActionListener(this);
-        header.solveButton.addActionListener(this);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.weightx = 0.25;
+        gbc.weighty = 0.80;
+        frame.add(menu.getPanel(), gbc);
+        
+        
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        gbc.weightx = 0.75;
+        gbc.weighty = 1.0;
+        JScrollPane mazeScrollPane = new JScrollPane(mazeDisplay.getDisplayPanel());
+        frame.add(mazeScrollPane, gbc);
+        
+        ///sth sth sth
         
         frame.setVisible(true);
     }
     
     public static void main(String [] args) {
-        GUI g = new GUI();
+        GUI gui = new GUI();
         
-        MazeDisplay mp = new MazeDisplay();
-        
-        Header h = new Header();
-        
-        
-        System.out.println(g.FRAMEHEIGHT);
-        System.out.println(g.HEADERHEIGHT);
-    }
 
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == header.fileButton) {
-            System.out.println("filebutton pressed");
-            file = header.readFile();
-            if (header.isCorrentFormat(file.getName() )) {
-                System.out.println("corrent format");
-            } else {
-                JOptionPane.showMessageDialog(null, 
-                        "Incorrent file format. \nTry .bin or .txt");
-            }
-            
-        }
-        if (e.getSource() == header.displayButton) {
-            System.out.println("display pressed");
-            try {
-                size = mfr.readMazeSize(file);
-                System.out.println(size[0] + " " + size[1]);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,
-                        "Choose a file first");
-            }
-        }
-        if (e.getSource() == header.solveButton) {
-            System.out.println("solve pressed");
-        }
     }
 }

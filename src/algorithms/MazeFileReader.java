@@ -11,10 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-/**
- *
- * @author pc
- */
+
 public class MazeFileReader {
     
     public int [] readMazeSize(File file) throws FileNotFoundException {
