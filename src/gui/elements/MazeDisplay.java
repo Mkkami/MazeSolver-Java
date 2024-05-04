@@ -8,11 +8,14 @@ import java.awt.*;
 import javax.swing.*;
 
 import algorithms.MazeData;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
-public class MazeDisplay extends JScrollPane { //scrollpanelayout
+public class MazeDisplay  {
     private MazeData mazeData;
     private JPanel displayPanel;
-    private final int rectSize = 10;
+    private JScrollPane displayScrollPane;
+    private final int rectSize = 15;
 
     public MazeDisplay(MazeData md) {
         this.mazeData = md;
@@ -26,7 +29,8 @@ public class MazeDisplay extends JScrollPane { //scrollpanelayout
         };
         displayPanel.setPreferredSize(new Dimension(
                 rectSize*mazeData.getHeight(), rectSize*mazeData.getWidth()));
-        setViewportView(displayPanel);
+        displayScrollPane = new JScrollPane(displayPanel);
+        
     }
     
     public void generateMazeDisplay(Graphics g) {
@@ -54,7 +58,7 @@ public class MazeDisplay extends JScrollPane { //scrollpanelayout
         
     }
     
-    public JPanel getDisplayPanel() {
-        return displayPanel;
+    public JScrollPane getDisplayPanel() {
+        return displayScrollPane;
     }
 }

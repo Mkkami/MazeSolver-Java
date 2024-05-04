@@ -5,15 +5,14 @@
 
 package gui.elements;
 
-import java.awt.Color;
-import javax.swing.JLabel;
+import javax.swing.*;
+import java.awt.*;
 
-public class FileLabel extends JLabel {
+public class FileInfoPanel extends JPanel {
+    private final Color BackgroundColor = new Color (18, 18, 18);
 
-    public FileLabel(String text, Color clr) {
-        super(text);
-        setForeground(clr);
-        
+    public FileInfoPanel() {
+        setBackground(Color.red);
     }
-    
+
 }

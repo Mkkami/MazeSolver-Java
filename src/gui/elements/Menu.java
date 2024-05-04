@@ -17,10 +17,7 @@ public class Menu {
     private SButton button1;
     private SButton button2;
     
-    private JLabel fileInfo;
-    
-    private final Color darkBackground = new Color(21, 25, 28);
-    private final Color testBackground = new Color(108, 122, 137);
+    private final Color darkBackground = new Color(18, 18, 18);
     
     public Menu() {
         menuPanel = new JPanel();
@@ -28,10 +25,8 @@ public class Menu {
         //buttons 
         fileButton = new SButton("Choose file"); //JFileChooser
         solveButton = new SButton("Solve maze");
-        button1 = new SButton("temp button");
-        button2 = new SButton("temp2 button");
         
-        menuPanel.setBackground(testBackground);
+        menuPanel.setBackground(darkBackground);
         
         createGridBagLayout();
         
@@ -49,15 +44,7 @@ public class Menu {
         menuPanel.add(fileButton, gbc);
         
         gbc.gridy = 1;
-        menuPanel.add(solveButton, gbc);
-
-        gbc.gridy = 2;
-        menuPanel.add(button1, gbc);
-
-        gbc.gridy = 3;
-        menuPanel.add(button2, gbc);
-
-       
+        menuPanel.add(solveButton, gbc);  
     }
     
     public JPanel getPanel() {

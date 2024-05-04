@@ -12,7 +12,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import jdk.jfr.consumer.EventStream;
 
-// https://www.javatpoint.com/java-gridbaglayout
 
 import gui.elements.Menu;
 import gui.elements.MazeDisplay;
@@ -22,7 +21,7 @@ public class GUI {  //gridbaglayout
         //16:9
     private final int FRAMEWIDTH = 1600;
     private final int FRAMEHEIGHT = (int)FRAMEWIDTH/16 * 9;
-    private final Color FrameBackground = new Color(57, 46, 74);
+    private final Color darkBackground = new Color(18, 18, 18);
     
     private GridBagConstraints gbc;
     
@@ -31,14 +30,21 @@ public class GUI {  //gridbaglayout
     private MazeData mazeData;
     
     public GUI() {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            UIManager.put("nimbusBase", darkBackground); 
+            UIManager.put("nimbusBlueGrey", darkBackground); 
+            UIManager.put("control", darkBackground); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         JFrame frame = new JFrame();
         frame.setSize(FRAMEWIDTH, FRAMEHEIGHT);
         frame.setTitle("Maze Solver");
         frame.setResizable(false);
         frame.setLayout(new GridBagLayout());
-        frame.setBackground(FrameBackground);
+        frame.setBackground(darkBackground);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
         
         menu = new Menu();
@@ -46,8 +52,7 @@ public class GUI {  //gridbaglayout
         mazeDisplay = new MazeDisplay(mazeData);
         
         gbc = new GridBagConstraints();
-        
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(50, 50, 50, 50);
         gbc.fill = GridBagConstraints.BOTH;
         
         gbc.gridx = 0;
@@ -64,10 +69,8 @@ public class GUI {  //gridbaglayout
         gbc.gridheight = 1;
         gbc.weightx = 0.75;
         gbc.weighty = 1.0;
-        JScrollPane mazeScrollPane = new JScrollPane(mazeDisplay.getDisplayPanel());
-        frame.add(mazeScrollPane, gbc);
+        frame.add(mazeDisplay.getDisplayPanel(), gbc);
         
-        ///sth sth sth
         
         frame.setVisible(true);
     }
