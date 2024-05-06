@@ -17,6 +17,7 @@ import gui.elements.Menu;
 import gui.elements.MazeDisplay;
 import gui.elements.FileInfoPanel;
 import algorithms.MazeData;
+import gui.elements.Help;
 
 public class GUI {
         //16:9
@@ -30,6 +31,7 @@ public class GUI {
     private MazeDisplay mazeDisplay;
     private MazeData mazeData;
     private FileInfoPanel fileInfo;
+    private Help help;
     
     public GUI() {
         try {
@@ -52,34 +54,42 @@ public class GUI {
         mazeData = new MazeData();
         mazeDisplay = new MazeDisplay(mazeData);
         fileInfo = new FileInfoPanel();
+        help = new Help();
         
         gbc = new GridBagConstraints();
-        gbc.insets = new Insets(50, 50, 50, 50);
-        gbc.fill = GridBagConstraints.BOTH;
-        
         gbc.gridx = 0;
         gbc.gridy = 0;
+        gbc.weightx = 0;
+        gbc.weighty = 0;
+        gbc.anchor = GridBagConstraints.NORTHWEST;      //left upper corner
+        frame.add(help.getHelpButton(), gbc);
+        
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(50, 50, 50, 50);
+          
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.weightx = 0.25;
         gbc.weighty = 0.80;
         frame.add(menu.getPanel(), gbc);
         
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 2;
         gbc.gridwidth = 1;
         gbc.weightx = 0.25;
         gbc.weighty = 0.20;
         frame.add(fileInfo.getFileInfoPanel(), gbc);
         
-        gbc.gridx = 2;
+        gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
-        gbc.gridheight = 2;
+        gbc.gridheight = 3;
         gbc.weightx = 0.75;
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayPanel(), gbc);
         
-        
+              
         frame.setVisible(true);
     }
     
