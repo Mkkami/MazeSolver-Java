@@ -16,6 +16,7 @@ import jdk.jfr.consumer.EventStream;
 import gui.elements.Menu;
 import gui.elements.MazeDisplay;
 import gui.elements.FileInfoPanel;
+import gui.elements.SoundButton;
 import algorithms.MazeData;
 
 public class GUI {
@@ -30,6 +31,7 @@ public class GUI {
     private MazeDisplay mazeDisplay;
     private MazeData mazeData;
     private FileInfoPanel fileInfo;
+    private JFrame frame;
     
     public GUI() {
         try {
@@ -40,7 +42,7 @@ public class GUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setSize(FRAMEWIDTH, FRAMEHEIGHT);
         frame.setTitle("Maze Solver");
         frame.setResizable(false);

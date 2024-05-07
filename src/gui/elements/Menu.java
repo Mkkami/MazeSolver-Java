@@ -15,10 +15,11 @@ public class Menu {
     private JPanel menuPanel;
     private JFileChooser fileChooser;
     
-    private SButton fileButton;
-    private SButton solveButton;
-    private SButton button1;
-    private SButton button2;
+    private TemplateButton fileButton;
+    private TemplateButton solveButton;
+    private TemplateButton button1;
+    private TemplateButton button2;
+    private SoundButton exitButton;
     
     private File file = null;
     
@@ -29,7 +30,7 @@ public class Menu {
         menuPanel = new JPanel();
         
         //buttons 
-        fileButton = new SButton("Choose file"); //JFileChooser
+        fileButton = new TemplateButton("Choose file"); //JFileChooser
         
         fileButton.addActionListener(new ActionListener() {
            @Override
@@ -53,7 +54,7 @@ public class Menu {
            }
         });
         
-        solveButton = new SButton("Solve maze");
+        solveButton = new TemplateButton("Solve maze");
         solveButton.setEnabled(false);
         solveButton.addActionListener(new ActionListener() {
             @Override
@@ -62,6 +63,8 @@ public class Menu {
             }
         });
         
+        exitButton = new SoundButton("Exit");
+
         menuPanel.setBackground(newBackground);
         menuPanel.setBorder(createRightBorder());
         
@@ -82,6 +85,9 @@ public class Menu {
         
         gbc.gridy = 1;
         menuPanel.add(solveButton, gbc);  
+        
+        gbc.gridy = 2;
+        menuPanel.add(exitButton, gbc);
     }
     
     public JPanel getPanel() {
