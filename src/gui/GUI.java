@@ -17,7 +17,6 @@ import gui.elements.Menu;
 import gui.elements.MazeDisplay;
 import gui.elements.FileInfoPanel;
 import algorithms.MazeData;
-import gui.elements.Help;
 
 public class GUI {
         //16:9
@@ -31,7 +30,6 @@ public class GUI {
     private MazeDisplay mazeDisplay;
     private MazeData mazeData;
     private FileInfoPanel fileInfo;
-    private Help help;
     
     public GUI() {
         try {
@@ -54,7 +52,6 @@ public class GUI {
         mazeData = new MazeData();
         mazeDisplay = new MazeDisplay(mazeData);
         fileInfo = new FileInfoPanel();
-        help = new Help();
         
         gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
