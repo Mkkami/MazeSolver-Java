@@ -15,7 +15,7 @@ public class SButton extends JButton {  //default button
     
     public SButton(String label) {
         super(label);
-        setPreferredSize(new Dimension(250, 100));
+        setPreferredSize(new Dimension(200, 50));
         setBackground(ButtonColor);
         setForeground(FontColor);
         setFont( new Font("Tahoma", Font.PLAIN, 30));

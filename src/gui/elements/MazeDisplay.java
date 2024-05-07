@@ -22,7 +22,7 @@ public class MazeDisplay  {
         displayPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
+                
                 generateMazeDisplay(g);
             }
         };

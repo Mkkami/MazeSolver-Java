@@ -6,25 +6,64 @@ package gui.elements;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.*;
+import java.io.File;
+import javax.swing.border.Border;
 
 public class Menu {
     private JPanel menuPanel;
+    private JFileChooser fileChooser;
     
     private SButton fileButton;
     private SButton solveButton;
     private SButton button1;
     private SButton button2;
     
+    private File file = null;
+    
     private final Color darkBackground = new Color(18, 18, 18);
+    private final Color newBackground = new Color(48, 31, 45);
     
     public Menu() {
         menuPanel = new JPanel();
         
         //buttons 
         fileButton = new SButton("Choose file"); //JFileChooser
-        solveButton = new SButton("Solve maze");
         
-        menuPanel.setBackground(darkBackground);
+        fileButton.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               fileChooser = new JFileChooser();
+               int result = fileChooser.showOpenDialog(fileChooser);
+               if (result == JFileChooser.APPROVE_OPTION) {
+                   file = fileChooser.getSelectedFile();
+                   if (file.getName().endsWith(".txt") || file.getName().endsWith(".bin")) {
+                       System.out.println("File read successfully");
+                       solveButton.setVisible(true);
+                       solveButton.setEnabled(true);
+                       
+                   } else {
+                       System.out.println(file.getName());
+                       System.out.println("Choose a file with .txt or .bin extension");
+                       file = null;
+                       solveButton.setEnabled(false);
+                   }
+               }
+           }
+        });
+        
+        solveButton = new SButton("Solve maze");
+        solveButton.setEnabled(false);
+        solveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("solve solve solve");
+            }
+        });
+        
+        menuPanel.setBackground(newBackground);
+        menuPanel.setBorder(createRightBorder());
         
         createGridBagLayout();
         
@@ -49,4 +88,8 @@ public class Menu {
         return menuPanel;
     }
     
+    private Border createRightBorder() {
+        Border border = BorderFactory.createMatteBorder(0, 0, 0, 1, new Color(46, 38, 43));
+        return border;
+    }
 }

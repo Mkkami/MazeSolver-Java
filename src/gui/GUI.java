@@ -57,35 +57,29 @@ public class GUI {
         help = new Help();
         
         gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 0;
-        gbc.weighty = 0;
-        gbc.anchor = GridBagConstraints.NORTHWEST;      //left upper corner
-        frame.add(help.getHelpButton(), gbc);
-        
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(50, 50, 50, 50);
-          
-        gbc.gridx = 0;
-        gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.weightx = 0.25;
+        gbc.weightx = 0.05;
         gbc.weighty = 0.80;
         frame.add(menu.getPanel(), gbc);
         
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.weightx = 0.25;
+        gbc.weightx = 0.05;
         gbc.weighty = 0.20;
         frame.add(fileInfo.getFileInfoPanel(), gbc);
+                
+        gbc.insets = new Insets(50, 50, 50, 50);
         
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
         gbc.gridheight = 3;
-        gbc.weightx = 0.75;
+        gbc.weightx = 0.90;
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayPanel(), gbc);
         
