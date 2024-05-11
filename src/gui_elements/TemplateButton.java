@@ -3,17 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package gui.elements;
+package gui_elements;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class SButton extends JButton {  //default button
+public class TemplateButton extends JButton {  //default button
     private final Color ButtonColor = new Color(76, 61, 87);
     
     private final Color FontColor = Color.BLACK;
     
-    public SButton(String label) {
+    public TemplateButton(String label) {
         super(label);
         setPreferredSize(new Dimension(200, 50));
         setBackground(ButtonColor);
@@ -22,8 +22,6 @@ public class SButton extends JButton {  //default button
         setBorderPainted(false);
         setContentAreaFilled(true);
         setFocusable(false);
-        
-        
     }
     
 }
