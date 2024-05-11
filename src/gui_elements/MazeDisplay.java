@@ -18,7 +18,7 @@ public class MazeDisplay  {
     private MazeData mazeData;
     private JPanel displayPanel;
     private JScrollPane displayScrollPane;
-    private final int rectSize = 15;
+    private final int rectSize = 10;
     private boolean fileRead = false;
     
     // rat img: https://www.klipartz.com/en/sticker-png-gpmbu
@@ -88,7 +88,10 @@ public class MazeDisplay  {
         this.mazeData = mazeData;
         fileRead = true;
         displayPanel.setPreferredSize(new Dimension(mazeData.getWidth()*rectSize,
-                mazeData.getHeight()*rectSize));
+                                        mazeData.getHeight()*rectSize));
+    }
+    
+    public void displayMaze() {
         displayPanel.repaint();
     }
     

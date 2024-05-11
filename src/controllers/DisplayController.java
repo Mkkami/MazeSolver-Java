@@ -62,6 +62,7 @@ public class DisplayController {
                         solveButton.setEnabled(true);
                         mazeData = new MazeData(file, file.getName().endsWith(".bin"));
                         mazeDisplay.setMazeData(mazeData);
+                        mazeDisplay.displayMaze();
                         return;
                     } else {
                         filePanel.changeFileInfoPanel(file.getName()+" is not .txt or .bin", Color.RED);

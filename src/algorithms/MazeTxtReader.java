@@ -6,6 +6,7 @@
 package algorithms;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.xml.stream.events.EndElement;
@@ -16,37 +17,43 @@ public class MazeTxtReader {
     
     private char [][] maze;
     
+    private File file;
     
     public MazeTxtReader(File file) {
+        this.file = file;
+        readSize();
+        
+        maze = new char[height][width];
+        readMaze();
+
+    }
+    private void readSize() {
         try {
-            Scanner scannersize = new Scanner(file);
+            Scanner scanner = new Scanner(file);
             String line;
-            while (scannersize.hasNextLine()) {
-                line = scannersize.nextLine();
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
                 height++;
                 width = line.length();
             }
-            System.out.println(height + ", " + width);
-            maze = new char[height][width];
-            scannersize.close();
-            Scanner scannerdata = new Scanner(file);
+            scanner.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void readMaze() {
+        try {
+            Scanner scanner = new Scanner(file);
             int h = 0;
-            while (scannerdata.hasNextLine()) {
-                char[] dataline = scannerdata.nextLine().toCharArray();
+            while (scanner.hasNextLine()) {
+                char[] dataline = scanner.nextLine().toCharArray();
                 for (int i = 0; i < width; i++) {
                     maze[h][i] = dataline[i];
                 }
                 h++;
             }
-            
-            for (char[]cc:maze) {
-                for (char c : cc) {
-                    System.out.print(c);
-                }
-                System.out.println();
-            }
-            
-        } catch (IOException ex) {
+        } catch(FileNotFoundException ex) {
             ex.printStackTrace();
         }
     }
