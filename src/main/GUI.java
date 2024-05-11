@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gui;
+package main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,10 +13,10 @@ import javax.imageio.ImageIO;
 import jdk.jfr.consumer.EventStream;
 
 
-import gui.elements.Menu;
-import gui.elements.MazeDisplay;
-import gui.elements.FileInfoPanel;
-import gui.elements.SoundButton;
+import gui_elements.Menu;
+import gui_elements.MazeDisplay;
+import gui_elements.FileInfoPanel;
+import gui_elements.SoundButton;
 import algorithms.MazeData;
 
 public class GUI {
@@ -32,6 +32,8 @@ public class GUI {
     private MazeData mazeData;
     private FileInfoPanel fileInfo;
     private JFrame frame;
+    
+    private DisplayController displayController;
     
     public GUI() {
         try {
@@ -80,14 +82,22 @@ public class GUI {
         gbc.gridheight = 3;
         gbc.weightx = 0.90;
         gbc.weighty = 1.0;
-        frame.add(mazeDisplay.getDisplayPanel(), gbc);
+        frame.add(mazeDisplay.getDisplayScrollPane(), gbc);
         
+        new DisplayController(mazeData ,this, menu, fileInfo, mazeDisplay);
+        new ExitController(this, menu);
               
         frame.setVisible(true);
     }
+    public JFrame getFrame() {
+        return frame;
+    }
     
-    public static void main(String [] args) {
-        GUI gui = new GUI();
-        
+    public void clearFrame() {
+        frame.getContentPane().removeAll();
+        //frame.revalidate();
+        frame.repaint();
+        System.out.println("cleared frame");
+
     }
 }

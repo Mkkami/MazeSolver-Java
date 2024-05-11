@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package gui.elements;
+package gui_elements;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,6 +26,7 @@ public class FileInfoPanel {
         infoLabel = new JLabel("Input file", SwingConstants.CENTER);
         infoLabel.setFont( new Font("Tahoma", Font.PLAIN, 30));
         infoLabel.setForeground(Color.GRAY);
+        infoLabel.setPreferredSize(new Dimension(250, 150));
         infoPanel.add(infoLabel);
         
         Border border = BorderFactory.createSoftBevelBorder(BevelBorder.LOWERED);
@@ -37,7 +38,7 @@ public class FileInfoPanel {
     }
     
     public void changeFileInfoPanel(String text, Color clr) {
-        infoLabel.setText(text);
+        infoLabel.setText("<html>" + text + "</html>"); //html for wrapping
         infoLabel.setForeground(clr);
     }
 

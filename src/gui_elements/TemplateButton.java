@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package gui.elements;
+package gui_elements;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,8 +22,6 @@ public class TemplateButton extends JButton {  //default button
         setBorderPainted(false);
         setContentAreaFilled(true);
         setFocusable(false);
-        
-        
     }
     
 }

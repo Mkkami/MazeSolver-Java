@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gui.elements;
+package gui_elements;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,8 +17,6 @@ public class Menu {
     
     private TemplateButton fileButton;
     private TemplateButton solveButton;
-    private TemplateButton button1;
-    private TemplateButton button2;
     private SoundButton exitButton;
     
     private File file = null;
@@ -32,36 +30,8 @@ public class Menu {
         //buttons 
         fileButton = new TemplateButton("Choose file"); //JFileChooser
         
-        fileButton.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               fileChooser = new JFileChooser();
-               int result = fileChooser.showOpenDialog(fileChooser);
-               if (result == JFileChooser.APPROVE_OPTION) {
-                   file = fileChooser.getSelectedFile();
-                   if (file.getName().endsWith(".txt") || file.getName().endsWith(".bin")) {
-                       System.out.println("File read successfully");
-                       solveButton.setVisible(true);
-                       solveButton.setEnabled(true);
-                       
-                   } else {
-                       System.out.println(file.getName());
-                       System.out.println("Choose a file with .txt or .bin extension");
-                       file = null;
-                       solveButton.setEnabled(false);
-                   }
-               }
-           }
-        });
-        
         solveButton = new TemplateButton("Solve maze");
         solveButton.setEnabled(false);
-        solveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("solve solve solve");
-            }
-        });
         
         exitButton = new SoundButton("Exit");
 
@@ -92,6 +62,18 @@ public class Menu {
     
     public JPanel getPanel() {
         return menuPanel;
+    }
+    
+    public JButton getFileButton() {
+        return fileButton;
+    }
+    
+    public JButton getSolveButton() {
+        return solveButton;
+    }
+    
+    public SoundButton getExitButton() {
+        return exitButton;
     }
     
     private Border createRightBorder() {

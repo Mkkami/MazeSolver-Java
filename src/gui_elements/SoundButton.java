@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package gui.elements;
+package gui_elements;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +12,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import main.GUI;
 
 public class SoundButton extends TemplateButton{
     
@@ -23,25 +25,10 @@ public class SoundButton extends TemplateButton{
 
     public SoundButton(String label) {
         super(label);
-        
-        setActionCommand("Exit");
-        
-        addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
-                    Clip clip = AudioSystem.getClip();
 
-                    clip.open(audioIn);
-                    clip.start();
-                    Thread.sleep(clip.getMicrosecondLength()/1000);
-
-                } catch (InterruptedException | LineUnavailableException | UnsupportedAudioFileException | IOException  ex ){
-                    ex.printStackTrace();
-                }
-                System.exit(0);
-            }
-        });
+    }
+    
+    public File getAudioFile() {
+        return audioFile;
     }
 }
