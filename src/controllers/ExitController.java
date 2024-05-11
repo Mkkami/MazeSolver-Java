@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package main;
+package controllers;
 
 import gui_elements.SoundButton;
 import gui_elements.Menu;
@@ -17,6 +17,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import main.GUI;
 
 
 
@@ -53,7 +54,6 @@ public class ExitController {
     
     private void displayExplosion() {
         gui.clearFrame();
-        frame.setBackground(Color.WHITE);
         
     }
     private void runExitAudio() {

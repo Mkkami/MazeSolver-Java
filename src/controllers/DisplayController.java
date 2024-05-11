@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package main;
+package controllers;
 
 import gui_elements.FileInfoPanel;
 import gui_elements.Menu;
@@ -15,6 +15,7 @@ import javax.swing.*;
 import algorithms.*;
 import java.awt.Color;
 import java.io.File;
+import main.GUI;
 
 public class DisplayController {
     private MazeData mazeData;
@@ -30,8 +31,7 @@ public class DisplayController {
     
     private File file = null;
     
-    public DisplayController(MazeData mda, GUI g, Menu m, FileInfoPanel fp, MazeDisplay mdp) {
-        this.mazeData = mda;
+    public DisplayController( GUI g, Menu m, FileInfoPanel fp, MazeDisplay mdp) {
         this.gui = g;
         this.menu = m;
         this.filePanel = fp;
@@ -58,11 +58,16 @@ public class DisplayController {
                     file = fileChooser.getSelectedFile();
                     if (file.getName().endsWith(".txt") || file.getName().endsWith(".bin")) {
                         System.out.println("File read success");
+                        filePanel.changeFileInfoPanel(file.getName()+" read successfully", Color.GREEN);
                         solveButton.setEnabled(true);
+                        mazeData = new MazeData(file, file.getName().endsWith(".bin"));
+                        mazeDisplay.setMazeData(mazeData);
+                        return;
                     } else {
                         filePanel.changeFileInfoPanel(file.getName()+" is not .txt or .bin", Color.RED);
                         file = null;
                         solveButton.setEnabled(false);
+                        return;
                     } 
                 }
             }

@@ -4,6 +4,8 @@
  */
 package main;
 
+import controllers.ExitController;
+import controllers.DisplayController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -53,8 +55,7 @@ public class GUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         menu = new Menu();
-        mazeData = new MazeData();
-        mazeDisplay = new MazeDisplay(mazeData);
+        mazeDisplay = new MazeDisplay();
         fileInfo = new FileInfoPanel();
         
         gbc = new GridBagConstraints();
@@ -84,7 +85,7 @@ public class GUI {
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayScrollPane(), gbc);
         
-        new DisplayController(mazeData ,this, menu, fileInfo, mazeDisplay);
+        new DisplayController(this, menu, fileInfo, mazeDisplay);
         new ExitController(this, menu);
               
         frame.setVisible(true);
