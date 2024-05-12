@@ -5,6 +5,7 @@
 
 package controllers;
 
+import data.MazeData;
 import gui_elements.FileInfoPanel;
 import gui_elements.Menu;
 import gui_elements.MazeDisplay;
@@ -12,7 +13,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-import algorithms.*;
 import java.awt.Color;
 import java.io.File;
 import main.GUI;
@@ -68,8 +68,7 @@ public class DisplayController {
                         return;
                     } else {
                         filePanel.changeFileInfoPanel(file.getName()+" is not .txt or .bin", Color.RED);
-                        file = null;
-                        solveButton.setEnabled(false);
+                        // does nothing
                         return;
                     } 
                 }
@@ -81,7 +80,7 @@ public class DisplayController {
         solveButton.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               filePanel.changeFileInfoPanel("Solving in progress...", Color.GRAY);
+               filePanel.changeFileInfoPanel("Solving in progress... (not really)", Color.GRAY);
            }
         });
     }

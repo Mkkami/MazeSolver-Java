@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package algorithms;
+package data;
 
 import java.io.File;
 import java.io.FileNotFoundException;

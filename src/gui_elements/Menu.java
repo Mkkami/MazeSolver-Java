@@ -29,7 +29,7 @@ public class Menu {
         menuPanel = new JPanel();
         
         //buttons 
-        fileButton = new TemplateButton("Choose file"); //JFileChooser
+        fileButton = new TemplateButton("Choose file");
         
         solveButton = new TemplateButton("Solve maze");
         solveButton.setEnabled(false);
@@ -66,6 +66,11 @@ public class Menu {
         gbc.gridy++;
         menuPanel.add(exitButton, gbc);
     }
+        
+    private Border createRightBorder() {
+        Border border = BorderFactory.createMatteBorder(0, 0, 0, 1, new Color(46, 38, 43));
+        return border;
+    }
     
     public JPanel getPanel() {
         return menuPanel;
@@ -85,10 +90,5 @@ public class Menu {
     
     public SoundButton getExitButton() {
         return exitButton;
-    }
-    
-    private Border createRightBorder() {
-        Border border = BorderFactory.createMatteBorder(0, 0, 0, 1, new Color(46, 38, 43));
-        return border;
     }
 }

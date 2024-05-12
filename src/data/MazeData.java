@@ -1,5 +1,5 @@
 
-package algorithms;
+package data;
 
 import java.io.File;
 
@@ -14,6 +14,7 @@ public class MazeData {
     public static final char PATH = ' ';
     
     private MazeTxtReader txtReader;
+    private MazeBinReader binReader;
 
     public MazeData(File file, boolean isBin) {
         if (isBin) {

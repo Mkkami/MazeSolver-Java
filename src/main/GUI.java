@@ -12,7 +12,7 @@ import gui_elements.Menu;
 import gui_elements.MazeDisplay;
 import gui_elements.FileInfoPanel;
 import gui_elements.SoundButton;
-import algorithms.MazeData;
+import data.MazeData;
 import gui_elements.MazeImage;
 
 import controllers.*;
@@ -60,15 +60,17 @@ public class GUI {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
-        gbc.weightx = 0.05;
-        gbc.weighty = 0.80;
+        gbc.gridheight = 2;
+        gbc.weightx = 0;
+        gbc.weighty = 0;
         frame.add(menu.getPanel(), gbc);
         
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.weightx = 0.05;
-        gbc.weighty = 0.20;
+        gbc.gridheight = 1;
+        gbc.weightx = 0;
+        gbc.weighty = 0.05;
         frame.add(fileInfo.getFileInfoPanel(), gbc);
            
         gbc.insets = new Insets(50, 50, 50, 50);
@@ -76,8 +78,8 @@ public class GUI {
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
-        gbc.gridheight = 3;
-        gbc.weightx = 0.90;
+        gbc.gridheight = 1;
+        gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayScrollPane(), gbc);
         

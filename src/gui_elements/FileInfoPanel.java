@@ -20,13 +20,11 @@ public class FileInfoPanel {
     public FileInfoPanel() {
         infoPanel = new JPanel();
         infoPanel.setBackground(BackgroundColor);
-        infoPanel.setPreferredSize(new Dimension(250, 150));
         infoPanel.setLayout(new BorderLayout());
-        
+
         infoLabel = new JLabel("<html>" + "Input file" + "</html>", SwingConstants.CENTER);
         infoLabel.setFont( new Font("Tahoma", Font.PLAIN, 30));
-        infoLabel.setForeground(Color.GRAY);
-        infoLabel.setPreferredSize(new Dimension(250, 150));
+        infoLabel.setForeground(Color.WHITE);
         
         infoPanel.add(infoLabel);
         

@@ -51,7 +51,7 @@ public class FileSaveController {
                         String filePath = selectedFolder.getAbsolutePath() + File.separator + "maze.png"; // Save as "maze.png" in the selected folder
                         try {
                             ImageIO.write(mazeImg, "png", new File(filePath));
-                            filePanel.changeFileInfoPanel("Maze image saved successfully to: " + filePath, Color.GREEN);
+                            filePanel.changeFileInfoPanel("Maze image saved successfully to: "+ filePath, Color.GREEN);
                         } catch (IOException ex) {
                             filePanel.changeFileInfoPanel("Error saving maze image", Color.RED);
                              System.out.println(ex.getMessage());

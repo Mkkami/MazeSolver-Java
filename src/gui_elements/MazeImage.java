@@ -4,7 +4,7 @@
  */
 package gui_elements;
 
-import algorithms.MazeData;
+import data.MazeData;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -12,14 +12,9 @@ import java.io.File;
 import javax.swing.*;
 
 public class MazeImage {
-
-    private int rectSize;
-
     private BufferedImage mazeImg;
 
-    public MazeImage(int rectSize) {
-        this.rectSize = rectSize;
-    }
+    public static int rectSize = 10;
 
     public BufferedImage generateMazeImage(int rows, int cols, char[][] maze) {
 

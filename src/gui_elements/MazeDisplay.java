@@ -7,7 +7,7 @@ package gui_elements;
 import java.awt.*;
 import javax.swing.*;
 
-import algorithms.MazeData;
+import data.MazeData;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,15 +20,11 @@ public class MazeDisplay  {
     
     private JPanel displayPanel;
     private JScrollPane displayScrollPane;
-    private static int rectSize = 10;
-    private boolean fileRead = false;
+    private BufferedImage mazeImg;
     
     // rat img: https://www.klipartz.com/en/sticker-png-gpmbu
-    
     private static final File IMG_FILE = new File("src/resources/rat.png");
     private BufferedImage ratImg;
-    
-    private BufferedImage mazeImg;
     
     private final int DEFAULT_HEIGHT = 700;
     private final int DEFAULT_WIDTH = 700;
@@ -44,15 +40,14 @@ public class MazeDisplay  {
         displayPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
-                if (fileRead) {
-                    displayMaze(g);
-                } else {
+                if (mazeImg != null)
+                    g.drawImage(mazeImg,0,0, displayPanel);
+                else
                     displayRat(g);
-                }
             }
         };
         
-        displayPanel.setPreferredSize(new Dimension(DEFAULT_WIDTH+1000, DEFAULT_HEIGHT));
+        displayPanel.setPreferredSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
         displayScrollPane = new JScrollPane(displayPanel);
         displayScrollPane.setBorder(createBorder());
     }
@@ -62,28 +57,20 @@ public class MazeDisplay  {
         int y = DEFAULT_HEIGHT-ratImg.getHeight();
         g.drawImage(ratImg, x, y, displayPanel);
     }
-
-    private void displayMaze(Graphics g) {
-        if (mazeImg != null)
-            g.drawImage(mazeImg, 0, 0, displayPanel);
-    }
     
     public void setMazeData(MazeData mazeData) {
         displayPanel.removeAll();
         this.mazeData = mazeData;
-        fileRead = true;
-        displayPanel.setPreferredSize(new Dimension(mazeData.getWidth()*rectSize,
-                                        mazeData.getHeight()*rectSize));
-        mazeImage = new MazeImage(rectSize);
-        mazeImg = mazeImage.generateMazeImage(mazeData.getWidth(), mazeData.getHeight(), mazeData.getMaze());
-        displayPanel.repaint();
+        displayPanel.setPreferredSize(new Dimension(mazeData.getWidth()*MazeImage.rectSize, mazeData.getHeight()*MazeImage.rectSize));
+        
+        mazeImg = new MazeImage().generateMazeImage(mazeData.getWidth(), mazeData.getHeight(), mazeData.getMaze());
     }
     
     private Border createBorder() {
         Border border = BorderFactory.createLineBorder(Color.GRAY,
                 2, true);
         Border insideBorder = BorderFactory.createLineBorder(
-                new Color(30, 30, 30),rectSize, true);
+                new Color(30, 30, 30),10, true);
         Border cBorder = BorderFactory.createCompoundBorder(border,
                 insideBorder);
         return cBorder;
@@ -95,14 +82,6 @@ public class MazeDisplay  {
     
     public JPanel getDisplayPanel() {
         return displayPanel;
-    }
-    
-    public void setRectSize(int size) {
-        this.rectSize = size;
-    }
-    
-    public static int getRectSize() {
-        return rectSize;
     }
     
     public BufferedImage getMazeImage() {
