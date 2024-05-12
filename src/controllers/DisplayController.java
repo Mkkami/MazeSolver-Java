@@ -27,6 +27,7 @@ public class DisplayController {
     private JFrame frame;
     private JButton fileButton;
     private JButton solveButton;
+    private JButton saveButton;
     private JPanel mazePanel;
     
     private File file = null;
@@ -40,6 +41,7 @@ public class DisplayController {
         this.frame = gui.getFrame();
         this.fileButton = menu.getFileButton();
         this.solveButton = menu.getSolveButton();
+        this.saveButton = menu.getSaveButton();
         this.mazePanel = mazeDisplay.getDisplayPanel();
         
         addFileButtonListener();
@@ -60,9 +62,9 @@ public class DisplayController {
                         System.out.println("File read success");
                         filePanel.changeFileInfoPanel(file.getName()+" read successfully", Color.GREEN);
                         solveButton.setEnabled(true); 
+                        saveButton.setEnabled(true);
                         mazeData = new MazeData(file, file.getName().endsWith(".bin"));
                         mazeDisplay.setMazeData(mazeData);
-                        mazeDisplay.generateMazeImage();
                         return;
                     } else {
                         filePanel.changeFileInfoPanel(file.getName()+" is not .txt or .bin", Color.RED);

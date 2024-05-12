@@ -4,22 +4,18 @@
  */
 package main;
 
-import controllers.ExitController;
-import controllers.DisplayController;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import jdk.jfr.consumer.EventStream;
-
 
 import gui_elements.Menu;
 import gui_elements.MazeDisplay;
 import gui_elements.FileInfoPanel;
 import gui_elements.SoundButton;
 import algorithms.MazeData;
+import gui_elements.MazeImage;
+
+import controllers.*;
 
 public class GUI {
         //16:9
@@ -87,6 +83,7 @@ public class GUI {
         
         new DisplayController(this, menu, fileInfo, mazeDisplay);
         new ExitController(this, menu);
+        new FileSaveController(menu, mazeDisplay, fileInfo);
               
         frame.setVisible(true);
     }

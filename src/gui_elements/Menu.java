@@ -18,6 +18,7 @@ public class Menu {
     private TemplateButton fileButton;
     private TemplateButton solveButton;
     private SoundButton exitButton;
+    private TemplateButton saveButton;
     
     private File file = null;
     
@@ -34,7 +35,10 @@ public class Menu {
         solveButton.setEnabled(false);
         
         exitButton = new SoundButton("Exit");
-
+        
+        saveButton = new TemplateButton("Save Image");
+        saveButton.setEnabled(false);
+        
         menuPanel.setBackground(newBackground);
         menuPanel.setBorder(createRightBorder());
         
@@ -53,10 +57,13 @@ public class Menu {
         gbc.gridy = 0;
         menuPanel.add(fileButton, gbc);
         
-        gbc.gridy = 1;
-        menuPanel.add(solveButton, gbc);  
+        gbc.gridy++;
+        menuPanel.add(solveButton, gbc);
         
-        gbc.gridy = 2;
+        gbc.gridy++;
+        menuPanel.add(saveButton, gbc);
+        
+        gbc.gridy++;
         menuPanel.add(exitButton, gbc);
     }
     
@@ -70,6 +77,10 @@ public class Menu {
     
     public JButton getSolveButton() {
         return solveButton;
+    }
+    
+    public JButton getSaveButton() {
+        return saveButton;
     }
     
     public SoundButton getExitButton() {
