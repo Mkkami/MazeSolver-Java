@@ -74,7 +74,7 @@ public class GUI {
         gbc.weightx = 0.05;
         gbc.weighty = 0.20;
         frame.add(fileInfo.getFileInfoPanel(), gbc);
-                
+           
         gbc.insets = new Insets(50, 50, 50, 50);
         
         gbc.gridx = 1;

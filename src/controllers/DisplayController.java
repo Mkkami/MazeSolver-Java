@@ -59,10 +59,10 @@ public class DisplayController {
                     if (file.getName().endsWith(".txt") || file.getName().endsWith(".bin")) {
                         System.out.println("File read success");
                         filePanel.changeFileInfoPanel(file.getName()+" read successfully", Color.GREEN);
-                        solveButton.setEnabled(true);
+                        solveButton.setEnabled(true); 
                         mazeData = new MazeData(file, file.getName().endsWith(".bin"));
                         mazeDisplay.setMazeData(mazeData);
-                        mazeDisplay.displayMaze();
+                        mazeDisplay.generateMazeImage();
                         return;
                     } else {
                         filePanel.changeFileInfoPanel(file.getName()+" is not .txt or .bin", Color.RED);

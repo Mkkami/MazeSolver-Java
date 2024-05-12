@@ -18,13 +18,15 @@ public class MazeDisplay  {
     private MazeData mazeData;
     private JPanel displayPanel;
     private JScrollPane displayScrollPane;
-    private final int rectSize = 10;
+    private static int rectSize = 10;
     private boolean fileRead = false;
     
     // rat img: https://www.klipartz.com/en/sticker-png-gpmbu
     
     private static final File IMG_FILE = new File("src/resources/rat.png");
     private BufferedImage ratImg;
+    
+    private BufferedImage mazeImg;
     
     private final int DEFAULT_HEIGHT = 700;
     private final int DEFAULT_WIDTH = 700;
@@ -41,57 +43,68 @@ public class MazeDisplay  {
             @Override
             protected void paintComponent(Graphics g) {
                 if (fileRead) {
-                    generateMazeDisplay(g);
+                    displayMaze(g);
                 } else {
                     displayRat(g);
                 }
             }
         };
         
-        displayPanel.setPreferredSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+        displayPanel.setPreferredSize(new Dimension(DEFAULT_WIDTH+1000, DEFAULT_HEIGHT));
         displayScrollPane = new JScrollPane(displayPanel);
         displayScrollPane.setBorder(createBorder());
     }
     private void displayRat(Graphics g) {
+        System.out.println("ss");
         int x = (int)(DEFAULT_WIDTH-ratImg.getWidth()/1.5);
         int y = DEFAULT_HEIGHT-ratImg.getHeight();
         g.drawImage(ratImg, x, y, displayPanel);
     }
     
-    public void generateMazeDisplay(Graphics g) {
+    public void generateMazeImage() {
         
         int rows = mazeData.getWidth();
         int cols = mazeData.getHeight();
         char [][] maze = mazeData.getMaze();
         
+        mazeImg = new BufferedImage(cols*rectSize, rows*rectSize, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = mazeImg.createGraphics();
+        
+        System.out.println("sss");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 int cellType = mazeData.getMaze()[i][j];
                 if (cellType == MazeData.WALL) {
-                    g.setColor(Color.BLACK);
+                    g2d.setColor(Color.BLACK);
                 } else if (cellType == MazeData.PATH) {
-                    g.setColor(Color.WHITE);
+                    g2d.setColor(Color.WHITE);
                 } else if (cellType == MazeData.EXIT) {
-                    g.setColor(Color.RED); 
+                    g2d.setColor(Color.RED); 
                 } else if (cellType == MazeData.START) {
-                    g.setColor(Color.BLUE);
+                    g2d.setColor(Color.BLUE);
                 }
                 int x = j * rectSize;
                 int y = i * rectSize;
-                g.fillRect(x, y, rectSize, rectSize);
+                g2d.fillRect(x, y, rectSize, rectSize);
             }
         }
-        
+        g2d.dispose();
+        fileRead = true;
     }
+    
+    private void displayMaze(Graphics g) {
+        if (mazeImg != null)
+            g.drawImage(mazeImg, 0, 0, displayPanel);
+        else
+            System.out.println("aaa");
+    }
+    
     public void setMazeData(MazeData mazeData) {
         displayPanel.removeAll();
         this.mazeData = mazeData;
         fileRead = true;
         displayPanel.setPreferredSize(new Dimension(mazeData.getWidth()*rectSize,
                                         mazeData.getHeight()*rectSize));
-    }
-    
-    public void displayMaze() {
         displayPanel.repaint();
     }
     
@@ -112,5 +125,13 @@ public class MazeDisplay  {
         Border cBorder = BorderFactory.createCompoundBorder(border,
                 insideBorder);
         return cBorder;
+    }
+    
+    public void setRectSize(int size) {
+        this.rectSize = size;
+    }
+    
+    public static int getRectSize() {
+        return rectSize;
     }
 }
