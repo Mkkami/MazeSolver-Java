@@ -86,7 +86,7 @@ public class GUI {
         new DisplayController(this, menu, fileInfo, mazeDisplay);
         new ExitController(this, menu);
         new FileSaveController(menu, mazeDisplay, fileInfo);
-        new MazeMouseController(mazeDisplay);
+        new MazeMouseController(mazeDisplay, fileInfo);
               
         frame.setVisible(true);
     }

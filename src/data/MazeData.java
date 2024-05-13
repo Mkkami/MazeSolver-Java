@@ -4,9 +4,9 @@ package data;
 import java.io.File;
 
 public class MazeData {
-    private int height;
-    private int width;
-    private char [][] maze;
+    private static int height;
+    private static int width;
+    private static char [][] maze;
     
     public static final char EXIT = 'K';
     public static final char START = 'P';
@@ -29,14 +29,14 @@ public class MazeData {
     }
     
     
-    public char [][] getMaze() {
+    public static char [][] getMaze() {
         return maze;
     }
 
-    public int getHeight() {
+    public static int getHeight() {
         return height;
     }
-    public int getWidth() {
+    public static int getWidth() {
         return width;
     }
 }

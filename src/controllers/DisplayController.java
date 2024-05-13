@@ -60,7 +60,6 @@ public class DisplayController {
                     file = fileChooser.getSelectedFile();
                     if (file.getName().endsWith(".txt") || file.getName().endsWith(".bin")) {
                         System.out.println("File read success");
-                        MazeDisplay.setFileReadValue(true);
                         filePanel.changeFileInfoPanel(file.getName()+" read successfully", Color.GREEN);
                         solveButton.setEnabled(true); 
                         saveButton.setEnabled(true);

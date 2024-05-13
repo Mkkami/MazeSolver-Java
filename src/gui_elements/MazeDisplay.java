@@ -30,14 +30,13 @@ public class MazeDisplay {
     private final int DEFAULT_HEIGHT = 700;
     private final int DEFAULT_WIDTH = 700;
 
-    private static boolean fileIsRead = false;
-
     public MazeDisplay() {
 
         displayPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
-                if (fileIsRead) {
+                super.paintComponent(g);
+                if (mazeImg != null) {
                     g.drawImage(mazeImg, 0, 0, displayPanel);
                 } else {
                     displayRat(g);
@@ -95,13 +94,5 @@ public class MazeDisplay {
 
     public void setMazeImage(BufferedImage img) {
         this.mazeImg = img;
-    }
-
-    public static void setFileReadValue(boolean b) {
-        fileIsRead = b;
-    }
-
-    public static boolean getFileReadValue() {
-        return fileIsRead;
     }
 }

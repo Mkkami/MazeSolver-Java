@@ -5,6 +5,7 @@
 package controllers;
 
 import data.MazeData;
+import gui_elements.FileInfoPanel;
 import gui_elements.MazeDisplay;
 import gui_elements.MazeImage;
 import java.awt.Color;
@@ -18,36 +19,50 @@ public class MazeMouseController {
 
     private MazeImage mazeImage;
     private MazeDisplay mazeDisplay;
-
+    private FileInfoPanel fileInfo;
+    
     private JPanel mazePanel;
     private BufferedImage mazeImg;
 
     private int[] coordinates = new int[2];
 
-    public MazeMouseController(MazeDisplay mazeDisplay) {
+    public MazeMouseController(MazeDisplay mazeDisplay, FileInfoPanel fileInfo) {
         this.mazeDisplay = mazeDisplay;
+        this.fileInfo = fileInfo;
 
         this.mazePanel = mazeDisplay.getDisplayPanel();
 
         mazePanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (MazeDisplay.getFileReadValue()) {
-                    mazeImg = mazeDisplay.getMazeImage();
+                mazeImg = mazeDisplay.getMazeImage();
+                if (mazeImg != null) {
                     if (SwingUtilities.isLeftMouseButton(e)) {
-                        getPosition(e);
-                        paintSquare(Color.RED);
-                        System.out.println("L (" + coordinates[0] + ", " + coordinates[1] + ")");
+                        clickAction(e, Color.GREEN);
                     } else if (SwingUtilities.isRightMouseButton(e)) {
-                        getPosition(e);
-                        paintSquare(Color.CYAN);
-                        System.out.println("R (" + coordinates[0] + ", " + coordinates[1] + ")");
+                        clickAction(e, Color.BLUE);
                     }
+                } else {
+                    System.out.println("Squeak!");
                 }
             }
         });
     }
-
+    
+    private void clickAction(MouseEvent e, Color clr) {
+        getPosition(e);
+        if (isInMazeBounds()) {
+            if (isCorner()) {
+                fileInfo.changeFileInfoPanel("Please avoid selecting a corner.", Color.RED);
+            } else {
+                paintSquare(clr);
+                System.out.println("(" + coordinates[0] + ", " + coordinates[1] + ")");
+            }
+        } else {
+            fileInfo.changeFileInfoPanel("You can't select a point outside of maze!", Color.red);
+        }
+    }
+ 
     private void getPosition(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
@@ -62,7 +77,21 @@ public class MazeMouseController {
     }
     
     private boolean isCorner() {
-        
+        if (coordinates[0] == 0 && coordinates[1] == 0) {
+            return true;
+        } else if (coordinates[0] == 0 && coordinates[1] == MazeData.getHeight()-1) {
+            return true;
+        } else if (coordinates[0] == MazeData.getWidth()-1 && coordinates[1] == 0) {
+            return true;
+        } else if (coordinates[0] == MazeData.getWidth()-1 && coordinates[1] == MazeData.getHeight()-1) {
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean isInMazeBounds() {
+        if(coordinates[0] < MazeData.getWidth() && coordinates[1] < MazeData.getHeight())
+            return true;
         return false;
     }
 } 
