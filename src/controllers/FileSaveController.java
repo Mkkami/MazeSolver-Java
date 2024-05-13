@@ -48,7 +48,14 @@ public class FileSaveController {
                     int result = fileChooser.showSaveDialog(fileChooser);
                     if (result == JFileChooser.APPROVE_OPTION) {
                         File selectedFolder = fileChooser.getSelectedFile();
-                        String filePath = selectedFolder.getAbsolutePath() + File.separator + "maze.png"; // Save as "maze.png" in the selected folder
+                        
+                        String filename = getFilename();
+                        if (filename == null || filename.trim().isEmpty()) {
+                            System.err.println("Invalid filename.");
+                            return;
+                        }
+                        
+                        String filePath = selectedFolder.getAbsolutePath() + File.separator + filename + ".png";
                         try {
                             ImageIO.write(mazeImg, "png", new File(filePath));
                             filePanel.changeFileInfoPanel("Maze image saved successfully to: "+ filePath, Color.GREEN);
@@ -62,5 +69,11 @@ public class FileSaveController {
                 }
             }
         });
+    }
+    
+    private String getFilename() {
+        filePanel.changeFileInfoPanel("Enter file name (without extension)", Color.WHITE);
+        String filename = JOptionPane.showInputDialog("Enter file name: ");
+        return filename;
     }
 }
