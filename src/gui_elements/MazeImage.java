@@ -41,4 +41,9 @@ public class MazeImage {
         g2d.dispose();
         return mazeImg;
     }
+    
+    public BufferedImage changeSquare(int x, int y) {
+        
+        return mazeImg;
+    }
 }

@@ -49,7 +49,10 @@ public class MazeTxtReader {
             while (scanner.hasNextLine()) {
                 char[] dataline = scanner.nextLine().toCharArray();
                 for (int i = 0; i < width; i++) {
-                    maze[h][i] = dataline[i];
+                    if (dataline[i] == MazeData.PATH)
+                        maze[h][i] = dataline[i];
+                    else
+                        maze[h][i] = MazeData.WALL;
                 }
                 h++;
             }

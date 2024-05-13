@@ -36,8 +36,8 @@ public class ExitController {
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                displayExplosion();
-                Thread audioThread = new Thread( new Runnable() {   //sleep is faster than clear the clear doesn't occur
+                displayExit();
+                Thread audioThread = new Thread( new Runnable() {   //sleep is faster than clear so clear doesn't occur
                     @Override
                     public void run() { 
                         runExitAudio();
@@ -48,9 +48,10 @@ public class ExitController {
         });
     }
     
-    private void displayExplosion() {
+    private void displayExit() {
         gui.clearFrame();
         //to do
+        gui.getFrame().setVisible(false);
     }
     private void runExitAudio() {
         try {

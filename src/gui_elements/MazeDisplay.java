@@ -61,9 +61,11 @@ public class MazeDisplay  {
     public void setMazeData(MazeData mazeData) {
         displayPanel.removeAll();
         this.mazeData = mazeData;
-        displayPanel.setPreferredSize(new Dimension(mazeData.getWidth()*MazeImage.rectSize, mazeData.getHeight()*MazeImage.rectSize));
+        int mWidth = mazeData.getWidth();
+        int mHeight = mazeData.getHeight();
+        displayPanel.setPreferredSize(new Dimension(mWidth*MazeImage.rectSize, mHeight*MazeImage.rectSize));
         
-        mazeImg = new MazeImage().generateMazeImage(mazeData.getWidth(), mazeData.getHeight(), mazeData.getMaze());
+        mazeImg = new MazeImage().generateMazeImage(mWidth, mHeight, mazeData.getMaze());
     }
     
     private Border createBorder() {
