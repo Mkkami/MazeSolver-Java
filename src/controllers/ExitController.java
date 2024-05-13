@@ -5,8 +5,9 @@
 
 package controllers;
 
-import gui_elements.SoundButton;
+import gui_elements.ExitButton;
 import gui_elements.Menu;
+import gui_elements.TemplateButton;
 import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
@@ -21,7 +22,7 @@ public class ExitController {
     private GUI gui;
     private Menu menu;
     
-    private SoundButton exitButton;
+    private ExitButton exitButton;
     private JFrame frame;
     private File audioFile;
     

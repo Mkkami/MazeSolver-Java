@@ -11,7 +11,7 @@ import java.awt.*;
 import gui_elements.Menu;
 import gui_elements.MazeDisplay;
 import gui_elements.FileInfoPanel;
-import gui_elements.SoundButton;
+import gui_elements.ExitButton;
 import data.MazeData;
 import gui_elements.MazeImage;
 

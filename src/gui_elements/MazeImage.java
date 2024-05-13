@@ -14,7 +14,7 @@ import javax.swing.*;
 public class MazeImage {
     private BufferedImage mazeImg;
 
-    public static int rectSize = 10;
+    private static int rectSize = 10;
 
     public BufferedImage generateMazeImage(int rows, int cols, char[][] maze) {
 
@@ -42,8 +42,15 @@ public class MazeImage {
         return mazeImg;
     }
     
-    public BufferedImage changeSquare(int x, int y) {
-        
-        return mazeImg;
+    public static BufferedImage changeSquare(int x, int y, Color clr, BufferedImage img) {
+        Graphics2D g2d = img.createGraphics();
+        g2d.setColor(clr);
+        g2d.fillRect(x*rectSize, y*rectSize, rectSize, rectSize);
+        g2d.dispose();
+        return img;
+    }
+    
+    public static int getRectSize() {
+        return rectSize;
     }
 }

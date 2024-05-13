@@ -15,7 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import main.GUI;
 
-public class SoundButton extends TemplateButton{
+public class ExitButton extends TemplateButton{
     
     // sound used from Deltarune 2
     // official site: https://deltarune.com
@@ -23,7 +23,7 @@ public class SoundButton extends TemplateButton{
     private static final File audioFile = new File("src/resources/snd_deathnoise.wav");
     
 
-    public SoundButton(String label) {
+    public ExitButton(String label) {
         super(label);
 
     }

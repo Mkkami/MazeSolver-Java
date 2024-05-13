@@ -17,7 +17,7 @@ public class Menu {
     
     private TemplateButton fileButton;
     private TemplateButton solveButton;
-    private SoundButton exitButton;
+    private ExitButton exitButton;
     private TemplateButton saveButton;
     
     private File file = null;
@@ -34,7 +34,7 @@ public class Menu {
         solveButton = new TemplateButton("Solve maze");
         solveButton.setEnabled(false);
         
-        exitButton = new SoundButton("Exit");
+        exitButton = new ExitButton("Exit");
         
         saveButton = new TemplateButton("Save Image");
         saveButton.setEnabled(false);
@@ -88,7 +88,7 @@ public class Menu {
         return saveButton;
     }
     
-    public SoundButton getExitButton() {
+    public ExitButton getExitButton() {
         return exitButton;
     }
 }
