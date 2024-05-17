@@ -2,20 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package main;
+package gui;
 
 
+import gui.controllers.ExitController;
+import gui.controllers.MazeMouseController;
+import gui.controllers.DisplayController;
+import gui.controllers.FileSaveController;
 import javax.swing.*;
 import java.awt.*;
 
-import gui_elements.Menu;
-import gui_elements.MazeDisplay;
-import gui_elements.FileInfoPanel;
-import gui_elements.ExitButton;
+import gui.elements.Menu;
+import gui.elements.MazeDisplay;
+import gui.elements.FileInfoPanel;
+import gui.elements.ExitButton;
 import data.MazeData;
-import gui_elements.MazeImage;
+import gui.elements.MazeImage;
 
-import controllers.*;
 
 public class GUI {
         //16:9

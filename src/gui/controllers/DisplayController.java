@@ -3,19 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package controllers;
+package gui.controllers;
 
 import data.MazeData;
-import gui_elements.FileInfoPanel;
-import gui_elements.Menu;
-import gui_elements.MazeDisplay;
+import gui.elements.FileInfoPanel;
+import gui.elements.Menu;
+import gui.elements.MazeDisplay;
 import java.awt.event.*;
 import javax.swing.*;
 
 
 import java.awt.Color;
 import java.io.File;
-import main.GUI;
+import gui.GUI;
 
 public class DisplayController {
     private MazeData mazeData;

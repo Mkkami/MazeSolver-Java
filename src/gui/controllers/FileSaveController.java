@@ -3,14 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package controllers;
+package gui.controllers;
 
 import java.awt.event.*;
 
-import gui_elements.FileInfoPanel;
-import gui_elements.MazeDisplay;
-import gui_elements.MazeImage;
-import gui_elements.Menu;
+import gui.elements.FileInfoPanel;
+import gui.elements.MazeDisplay;
+import gui.elements.MazeImage;
+import gui.elements.Menu;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package gui_elements;
+package gui.elements;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import main.GUI;
+import gui.GUI;
 
 public class ExitButton extends TemplateButton{
     

@@ -5,6 +5,7 @@
 
 package main;
 
+import gui.GUI;
 import javax.swing.SwingUtilities;
 
 public class Main {

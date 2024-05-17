@@ -3,18 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package controllers;
+package gui.controllers;
 
-import gui_elements.ExitButton;
-import gui_elements.Menu;
-import gui_elements.TemplateButton;
+import gui.elements.ExitButton;
+import gui.elements.Menu;
+import gui.elements.TemplateButton;
 import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
-import main.GUI;
+import gui.GUI;
 
 
 

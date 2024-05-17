@@ -13,6 +13,9 @@ public class MazeData {
     public static final char WALL = 'X';
     public static final char PATH = ' ';
     
+    private char prev_x = 'X';
+    private char prev_y = 'X';
+    
     private MazeTxtReader txtReader;
     private MazeBinReader binReader;
 
@@ -27,7 +30,33 @@ public class MazeData {
             maze = txtReader.getMaze();
         }
     }
+    public static boolean isCorner(int x, int y) {
+        if (x == 0 && y == 0) {
+            return true;
+        } else if (x == 0 && y == height-1) {
+            return true;
+        } else if (x == width-1 && y == 0) {
+            return true;
+        } else if (x == width-1 && y == height-1) {
+            return true;
+        }
+        return false;
+    }
     
+    public static boolean isInMazeBounds(int x, int y) {
+        if(x < width && y < height)
+            return true;
+        return false;
+    }
+    
+    public static void printMaze() {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(maze[i][j]);
+            }
+            System.out.println();
+        }
+    }
     
     public static char [][] getMaze() {
         return maze;
