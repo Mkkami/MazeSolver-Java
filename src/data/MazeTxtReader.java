@@ -16,6 +16,9 @@ public class MazeTxtReader {
     private int width = 0;
     
     private char [][] maze;
+        
+    private MyPoint startPoint;     //if doesn't exist -> null
+    private MyPoint exitPoint;
     
     private File file;
     
@@ -50,6 +53,11 @@ public class MazeTxtReader {
                 char[] dataline = scanner.nextLine().toCharArray();
                 for (int i = 0; i < width; i++) {
                     maze[h][i] = dataline[i];
+                    if (dataline[i] == MazeData.START) {
+                        startPoint = new MyPoint(i, h);
+                    } else if (dataline[i] == MazeData.EXIT) {
+                        exitPoint = new MyPoint(i, h);
+                    }
                 }
                 h++;
             }
@@ -61,10 +69,20 @@ public class MazeTxtReader {
     public char [][] getMaze() {
         return maze;
     }
+    
     public int getHeight() {
         return height;
     }
+    
     public int getWidth() {
         return width;
+    }
+    
+    public MyPoint getStartPoint() {
+        return startPoint;
+    }
+    
+    public MyPoint getExitPoint() {
+        return exitPoint;
     }
 }

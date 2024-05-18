@@ -23,7 +23,7 @@ public class Terminal {
     }
     
     private File readFileFromUser() {
-        System.out.print("Input file from maze_files: ");
+        System.out.print("Input filename from maze_files: ");
         Scanner scanner = new Scanner(System.in);
         String filename = scanner.nextLine();
         mazeFile = new File( "src/maze_files/"+filename);

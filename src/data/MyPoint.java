@@ -21,4 +21,9 @@ public class MyPoint {
     public int getY() {
         return y;
     }
+    
+    public void changePoint(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }

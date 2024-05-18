@@ -49,13 +49,16 @@ public class MazeMouseController {
     }
     
     private void clickAction(MouseEvent e, Color clr) {
-        int x = getPosition(e).getX();
-        int y = getPosition(e).getY();
+        MyPoint pos = getPosition(e);
+        int x = pos.getX();
+        int y = pos.getY();
         if (MazeData.isInMazeBounds(x, y)) {
             if (MazeData.isCorner(x, y)) {
                 fileInfo.changeFileInfoPanel("Please avoid selecting a corner.", Color.RED);
             } else {
+                changeToPrevious(x, y, clr);
                 paintSquare(x, y, clr);
+                MazeData.printMaze();
                 System.out.println("(" + x + ", " + y + ")");
             }
         } else {
@@ -74,5 +77,41 @@ public class MazeMouseController {
         MazeImage.changeSquare(x, y, clr, mazeImg);
         mazeDisplay.setMazeImage(mazeImg);
         mazePanel.repaint();
+    }
+    
+    private void changePreviousCellColor(Color clr) {
+        MyPoint oldPoint;
+        Color oldColor;
+        char oldCell;
+        if (clr == Color.GREEN) { //start
+            oldPoint = MazeData.startPoint;
+            oldCell = MazeData.prev_start;
+        } else {
+            oldPoint = MazeData.exitPoint;
+            oldCell = MazeData.prev_end;
+        }
+        
+        if (oldPoint != null) {
+            switch (oldCell) {
+                case MazeData.WALL:
+                    oldColor = Color.BLACK;
+                    break;
+                case MazeData.PATH:
+                    oldColor = Color.WHITE;
+                    break;
+                default:
+                    oldColor = Color.RED;
+                    System.err.println("clicked LEFT on EXIT or RIGHT on START");
+            }
+            paintSquare(oldPoint.getX(), oldPoint.getY(), oldColor);
+        }        
+    }
+    private void changeToPrevious(int x, int y, Color clr) {
+        changePreviousCellColor(clr);
+        if (clr == Color.GREEN) {
+            MazeData.changeStartPoint(new MyPoint(x, y));
+        } else {
+            MazeData.changeExitPoint(new MyPoint(x, y));
+        }
     }
 } 

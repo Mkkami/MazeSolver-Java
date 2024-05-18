@@ -13,8 +13,11 @@ public class MazeData {
     public static final char WALL = 'X';
     public static final char PATH = ' ';
     
-    private char prev_x = 'X';
-    private char prev_y = 'X';
+    public static char prev_start = 'X';
+    public static char prev_end = 'X';
+    
+    public static MyPoint startPoint;
+    public static MyPoint exitPoint;
     
     private MazeTxtReader txtReader;
     private MazeBinReader binReader;
@@ -28,6 +31,8 @@ public class MazeData {
             height = txtReader.getHeight();
             width = txtReader.getWidth();
             maze = txtReader.getMaze();
+            startPoint = txtReader.getStartPoint();
+            exitPoint = txtReader.getExitPoint();
         }
     }
     public static boolean isCorner(int x, int y) {
@@ -65,7 +70,26 @@ public class MazeData {
     public static int getHeight() {
         return height;
     }
+    
     public static int getWidth() {
         return width;
+    }
+    
+    public static void changeStartPoint(MyPoint newStart) {
+        if (startPoint != null) {
+            maze[startPoint.getY()][startPoint.getX()] = prev_start;
+        }
+        prev_start = maze[newStart.getY()][newStart.getX()];
+        maze[newStart.getY()][newStart.getX()] = MazeData.START;
+        startPoint = newStart;
+    }
+    
+    public static void changeExitPoint(MyPoint newExit) {
+        if (exitPoint != null) {
+            maze[exitPoint.getY()][exitPoint.getX()] = prev_end;
+        }
+        prev_end = maze[newExit.getY()][newExit.getX()];
+        maze[newExit.getY()][newExit.getX()] = MazeData.EXIT;
+        exitPoint = newExit;
     }
 }

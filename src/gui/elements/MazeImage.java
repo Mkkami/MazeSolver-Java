@@ -29,9 +29,9 @@ public class MazeImage {
                 } else if (cellType == MazeData.PATH) {
                     g2d.setColor(Color.WHITE);
                 } else if (cellType == MazeData.EXIT) {
-                    g2d.setColor(Color.RED);
-                } else if (cellType == MazeData.START) {
                     g2d.setColor(Color.BLUE);
+                } else if (cellType == MazeData.START) {
+                    g2d.setColor(Color.GREEN);
                 }
                 int x = j * rectSize;
                 int y = i * rectSize;
