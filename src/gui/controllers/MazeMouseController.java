@@ -58,7 +58,6 @@ public class MazeMouseController {
             } else {
                 changeToPrevious(x, y, clr);
                 paintSquare(x, y, clr);
-                MazeData.printMaze();
                 System.out.println("(" + x + ", " + y + ")");
             }
         } else {
