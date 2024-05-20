@@ -18,7 +18,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class FileSaveController {
+public class ImageSaveController {
     private Menu menu;
     private MazeDisplay mazeDisplay;
     private MazeImage mazeImage;
@@ -28,7 +28,7 @@ public class FileSaveController {
     
     private BufferedImage mazeImg;
     
-    public FileSaveController(Menu menu, MazeDisplay mazeDisplay, FileInfoPanel filePanel) {
+    public ImageSaveController(Menu menu, MazeDisplay mazeDisplay, FileInfoPanel filePanel) {
         this.menu = menu;
         this.mazeDisplay = mazeDisplay;
         this.filePanel = filePanel;

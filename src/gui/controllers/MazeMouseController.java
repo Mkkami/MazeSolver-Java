@@ -101,7 +101,7 @@ public class MazeMouseController {
                     break;
                 default:
                     oldColor = Color.RED;
-                    System.err.println("clicked LEFT on EXIT or RIGHT on START");
+                    System.err.println("how did you get there");
             }
             paintSquare(oldPoint.getX(), oldPoint.getY(), oldColor);
         }        

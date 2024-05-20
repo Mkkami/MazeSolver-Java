@@ -8,7 +8,7 @@ package gui;
 import gui.controllers.ExitController;
 import gui.controllers.MazeMouseController;
 import gui.controllers.DisplayController;
-import gui.controllers.FileSaveController;
+import gui.controllers.ImageSaveController;
 import javax.swing.*;
 import java.awt.*;
 
@@ -88,7 +88,7 @@ public class GUI {
         
         new DisplayController(this, menu, fileInfo, mazeDisplay);
         new ExitController(this, menu);
-        new FileSaveController(menu, mazeDisplay, fileInfo);
+        new ImageSaveController(menu, mazeDisplay, fileInfo);
         new MazeMouseController(mazeDisplay, fileInfo);
               
         frame.setVisible(true);
