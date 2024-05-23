@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
+import java.lang.NullPointerException;
+
 public class Bfs {
             //up right left down
     private final static int[][] DIRECTIONS = { {-1, 0}, {0, 1}, {0, -1}, {1, 0} };
@@ -31,11 +33,8 @@ public class Bfs {
     public Bfs() {
         this.maze = MazeData.getMaze();
         
-        if (MazeData.startPoint == null) {
-            System.out.println("start Point null");
-        }
-        if (MazeData.exitPoint == null) {
-            System.out.println("exit null");
+        if (MazeData.startPoint == null || MazeData.exitPoint == null) {
+            throw new NullPointerException("start or end point null");
         }
         
         startNode = new Node(MazeData.startPoint.getX(), MazeData.startPoint.getY(), null);
@@ -52,7 +51,6 @@ public class Bfs {
 
             if (isExit(currentNode)) {
                 exitNode = currentNode;
-                System.out.println("exit found");
                 return createPath();
             }
 

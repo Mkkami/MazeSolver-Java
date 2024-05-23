@@ -81,8 +81,10 @@ public class MazeData {
         }
         if (maze[newStart.getY()][newStart.getX()] != 'K')
             prev_start = maze[newStart.getY()][newStart.getX()];
-        else 
+        else  {
             prev_start = prev_end;
+            exitPoint = null;
+        }
         maze[newStart.getY()][newStart.getX()] = MazeData.START;
         startPoint = newStart;
     }
@@ -93,8 +95,10 @@ public class MazeData {
         }
         if (maze[newExit.getY()][newExit.getX()] != 'P')
             prev_end = maze[newExit.getY()][newExit.getX()];
-        else 
+        else {
             prev_end = prev_start;
+            startPoint = null;
+        }
         maze[newExit.getY()][newExit.getX()] = MazeData.EXIT;
         exitPoint = newExit;
     }

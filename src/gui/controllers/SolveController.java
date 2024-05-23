@@ -35,17 +35,21 @@ public class SolveController {
         solveButton.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               filePanel.changeFileInfoPanel("Solving in progress... (i think)", Color.GRAY);
-               Bfs bfs = new Bfs();
-               List<Point> path = bfs.solve();
-               if (path == null ) {
-                   filePanel.changeFileInfoPanel("No path found.", Color.red);
-               } else {
-                   for (Point p : path) {
-                       System.out.println(p.toString());
-                   }
-               } 
-               
+                try {
+                    Bfs bfs = new Bfs();
+
+                    List<Point> path = bfs.solve();
+                    if (path == null ) {
+                        filePanel.changeFileInfoPanel("No path found.", Color.red);
+                    } else {
+                        for (Point p : path) {
+                            System.out.println(p.toString());
+                            filePanel.changeFileInfoPanel("Maze solved.", Color.GREEN);
+                        }
+                    }
+                } catch (NullPointerException ex) {
+                    filePanel.changeFileInfoPanel("Select start and end point.", Color.red);
+                }
            }
         });
     }
