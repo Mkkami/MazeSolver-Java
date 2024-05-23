@@ -24,7 +24,6 @@ public class DisplayController {
     private FileInfoPanel filePanel;
     private MazeDisplay mazeDisplay;
     
-    private JFrame frame;
     private JButton fileButton;
     private JButton solveButton;
     private JButton saveButton;
@@ -32,22 +31,17 @@ public class DisplayController {
     
     private File file = null;
     
-    public DisplayController( GUI g, Menu m, FileInfoPanel fp, MazeDisplay mdp) {
-        this.gui = g;
+    public DisplayController( Menu m, FileInfoPanel fp, MazeDisplay mdp) {
         this.menu = m;
         this.filePanel = fp;
         this.mazeDisplay = mdp;
         
-        this.frame = gui.getFrame();
         this.fileButton = menu.getFileButton();
         this.solveButton = menu.getSolveButton();
         this.saveButton = menu.getSaveButton();
         this.mazePanel = mazeDisplay.getDisplayPanel();
         
         addFileButtonListener();
-        
-        addSolveButtonListener();
-        
     }
     
     private void addFileButtonListener() {
@@ -75,16 +69,4 @@ public class DisplayController {
             }
         });
     }
-    
-    private void addSolveButtonListener() {
-        solveButton.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               filePanel.changeFileInfoPanel("Solving in progress... (not really)", Color.GRAY);
-           }
-        });
-    }
-    
-    
-
 }

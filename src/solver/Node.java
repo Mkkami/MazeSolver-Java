@@ -3,15 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package data;
+package solver;
 
-public class MyPoint {
-    private int x;
-    private int y;
+public class Node {
+    private final int x;
+    private final int y;
+    private final Node previous;
 
-    public MyPoint(int x, int y) {
+    public Node(int x, int y, Node previous) {
         this.x = x;
         this.y = y;
+        this.previous = previous;
     }
     
     public int getX() {
@@ -22,8 +24,12 @@ public class MyPoint {
         return y;
     }
     
-    public void changePoint(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Node getPrevious() {
+        return previous;
+    } 
+    
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
     }
 }

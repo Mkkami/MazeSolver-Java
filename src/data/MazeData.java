@@ -16,8 +16,8 @@ public class MazeData {
     public static char prev_start = 'X';
     public static char prev_end = 'X';
     
-    public static MyPoint startPoint;
-    public static MyPoint exitPoint;
+    public static Point startPoint;
+    public static Point exitPoint;
     
     private MazeTxtReader txtReader;
     private MazeBinReader binReader;
@@ -75,7 +75,7 @@ public class MazeData {
         return width;
     }
     
-    public static void changeStartPoint(MyPoint newStart) {
+    public static void changeStartPoint(Point newStart) {
         if (startPoint != null) {
             maze[startPoint.getY()][startPoint.getX()] = prev_start;
         }
@@ -87,7 +87,7 @@ public class MazeData {
         startPoint = newStart;
     }
     
-    public static void changeExitPoint(MyPoint newExit) {
+    public static void changeExitPoint(Point newExit) {
         if (exitPoint != null) {
             maze[exitPoint.getY()][exitPoint.getX()] = prev_end;
         }

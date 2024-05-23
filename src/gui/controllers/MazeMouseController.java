@@ -8,7 +8,7 @@ import data.MazeData;
 import gui.elements.FileInfoPanel;
 import gui.elements.MazeDisplay;
 import gui.elements.MazeImage;
-import data.MyPoint;
+import data.Point;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -49,7 +49,7 @@ public class MazeMouseController {
     }
     
     private void clickAction(MouseEvent e, Color clr) {
-        MyPoint pos = getPosition(e);
+        Point pos = getPosition(e);
         int x = pos.getX();
         int y = pos.getY();
         if (MazeData.isInMazeBounds(x, y)) {
@@ -65,10 +65,10 @@ public class MazeMouseController {
         }
     }
  
-    private MyPoint getPosition(MouseEvent e) {
+    private Point getPosition(MouseEvent e) {
         int x = (int)(e.getX()/MazeImage.getRectSize());
         int y = (int)(e.getY()/MazeImage.getRectSize());
-        MyPoint pt = new MyPoint(x, y);
+        Point pt = new Point(x, y);
         return pt;
     }
 
@@ -79,7 +79,7 @@ public class MazeMouseController {
     }
     
     private void changePreviousCellColor(Color clr) {
-        MyPoint oldPoint;
+        Point oldPoint;
         Color oldColor;
         char oldCell;
         if (clr == Color.GREEN) { //start
@@ -108,9 +108,9 @@ public class MazeMouseController {
     private void changeToPrevious(int x, int y, Color clr) {
         changePreviousCellColor(clr);
         if (clr == Color.GREEN) {
-            MazeData.changeStartPoint(new MyPoint(x, y));
+            MazeData.changeStartPoint(new Point(x, y));
         } else {
-            MazeData.changeExitPoint(new MyPoint(x, y));
+            MazeData.changeExitPoint(new Point(x, y));
         }
     }
 } 

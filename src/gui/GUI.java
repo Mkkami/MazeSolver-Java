@@ -17,6 +17,7 @@ import gui.elements.MazeDisplay;
 import gui.elements.FileInfoPanel;
 import gui.elements.ExitButton;
 import data.MazeData;
+import gui.controllers.SolveController;
 import gui.elements.MazeImage;
 
 
@@ -86,10 +87,11 @@ public class GUI {
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayScrollPane(), gbc);
         
-        new DisplayController(this, menu, fileInfo, mazeDisplay);
+        new DisplayController(menu, fileInfo, mazeDisplay);
         new ExitController(this, menu);
         new ImageSaveController(menu, mazeDisplay, fileInfo);
         new MazeMouseController(mazeDisplay, fileInfo);
+        new SolveController(menu, fileInfo);
               
         frame.setVisible(true);
     }
