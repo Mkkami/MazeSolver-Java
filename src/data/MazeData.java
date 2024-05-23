@@ -19,8 +19,8 @@ public class MazeData {
     public static Point startPoint;
     public static Point exitPoint;
     
-    private MazeTxtReader txtReader;
-    private MazeBinReader binReader;
+    private static MazeTxtReader txtReader;
+    private static MazeBinReader binReader;
 
     public MazeData(File file, boolean isBin) {
         if (isBin) {
@@ -61,6 +61,13 @@ public class MazeData {
             }
             System.out.println();
         }
+    }
+    
+    public static void reset() {
+        startPoint = txtReader.getStartPoint();
+        exitPoint = txtReader.getExitPoint();
+        prev_start = 'X';
+        prev_end = 'X';
     }
     
     public static char [][] getMaze() {

@@ -7,6 +7,7 @@ package gui.controllers;
 
 import data.Point;
 import gui.elements.FileInfoPanel;
+import gui.elements.MazeDisplay;
 import gui.elements.Menu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -20,13 +21,19 @@ public class SolveController {
     
     private Menu menu;
     private FileInfoPanel filePanel;
+    private MazeDisplay mazeDisplay;
     private JButton solveButton;
+    private JButton clearButton;
     
-    public SolveController(Menu m, FileInfoPanel fp) {
+    private boolean pathDisplayed = false;
+    
+    public SolveController(Menu m, FileInfoPanel fp, MazeDisplay md) {
         menu = m;
         filePanel = fp;
+        mazeDisplay = md;
         
         solveButton = menu.getSolveButton();
+        clearButton = menu.getClearButton();
         
         addSolveButtonListener();
     } 
@@ -42,10 +49,10 @@ public class SolveController {
                     if (path == null ) {
                         filePanel.changeFileInfoPanel("No path found.", Color.red);
                     } else {
-                        for (Point p : path) {
-                            System.out.println(p.toString());
-                            filePanel.changeFileInfoPanel("Maze solved.", Color.GREEN);
-                        }
+                        mazeDisplay.displayPath(path);
+                        pathDisplayed = true;
+                        filePanel.changeFileInfoPanel("Maze solved.", Color.GREEN);
+                        clearButton.setEnabled(true);
                     }
                 } catch (NullPointerException ex) {
                     filePanel.changeFileInfoPanel("Select start and end point.", Color.red);

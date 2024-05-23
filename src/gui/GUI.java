@@ -17,6 +17,7 @@ import gui.elements.MazeDisplay;
 import gui.elements.FileInfoPanel;
 import gui.elements.ExitButton;
 import data.MazeData;
+import gui.controllers.ClearController;
 import gui.controllers.SolveController;
 import gui.elements.MazeImage;
 
@@ -91,7 +92,8 @@ public class GUI {
         new ExitController(this, menu);
         new ImageSaveController(menu, mazeDisplay, fileInfo);
         new MazeMouseController(mazeDisplay, fileInfo);
-        new SolveController(menu, fileInfo);
+        new SolveController(menu, fileInfo, mazeDisplay);
+        new ClearController(menu, fileInfo, mazeDisplay);
               
         frame.setVisible(true);
     }

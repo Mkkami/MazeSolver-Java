@@ -8,11 +8,13 @@ import java.awt.*;
 import javax.swing.*;
 
 import data.MazeData;
+import data.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.border.Border;
+import java.util.List;
 
 public class MazeDisplay {
 
@@ -22,6 +24,7 @@ public class MazeDisplay {
     private JPanel displayPanel;
     private JScrollPane displayScrollPane;
     private BufferedImage mazeImg;
+    private BufferedImage originalMazeImg;
 
     // rat img: https://www.klipartz.com/en/sticker-png-gpmbu
     private static final File IMG_FILE = new File("src/resources/rat.png");
@@ -59,6 +62,18 @@ public class MazeDisplay {
         int y = DEFAULT_HEIGHT - ratImg.getHeight();
         g.drawImage(ratImg, x, y, displayPanel);
     }
+    
+    public void displayPath(List<Point> path) {
+        for (Point p : path) {
+            mazeImage.changeSquare(p.getX(), p.getY(), Color.red, mazeImg);
+            displayPanel.repaint();
+        }
+    }
+    
+    public void clearImage() {
+        mazeImg = copyImage(originalMazeImg);
+        displayPanel.repaint();
+    }
 
     public void setMazeData(MazeData mazeData) {
         displayPanel.removeAll();
@@ -68,6 +83,14 @@ public class MazeDisplay {
         displayPanel.setPreferredSize(new Dimension(mWidth * MazeImage.getRectSize(), mHeight * MazeImage.getRectSize()));
 
         mazeImg = new MazeImage().generateMazeImage(mWidth, mHeight, mazeData.getMaze());
+        originalMazeImg = copyImage(mazeImg);
+    }
+    private BufferedImage copyImage(BufferedImage img) {
+        BufferedImage copy = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        Graphics2D g2d = copy.createGraphics();
+        g2d.drawImage(img, 0, 0, null);
+        g2d.dispose();
+        return copy;
     }
 
     private Border createBorder() {

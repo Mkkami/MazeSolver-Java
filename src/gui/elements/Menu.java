@@ -19,6 +19,7 @@ public class Menu {
     private TemplateButton solveButton;
     private ExitButton exitButton;
     private TemplateButton saveButton;
+    private TemplateButton clearButton;
     
     private File file = null;
     
@@ -38,6 +39,9 @@ public class Menu {
         
         saveButton = new TemplateButton("Save Image");
         saveButton.setEnabled(false);
+        
+        clearButton = new TemplateButton("Reset maze");
+        clearButton.setEnabled(false);
         
         menuPanel.setBackground(newBackground);
         menuPanel.setBorder(createRightBorder());
@@ -62,6 +66,9 @@ public class Menu {
         
         gbc.gridy++;
         menuPanel.add(saveButton, gbc);
+        
+        gbc.gridy++;
+        menuPanel.add(clearButton, gbc);
         
         gbc.gridy++;
         menuPanel.add(exitButton, gbc);
@@ -90,5 +97,9 @@ public class Menu {
     
     public ExitButton getExitButton() {
         return exitButton;
+    }
+    
+    public JButton getClearButton() {
+        return clearButton;
     }
 }
