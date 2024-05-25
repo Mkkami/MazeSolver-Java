@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import javax.xml.stream.events.EndElement;
 
-public class MazeTxtReader {
+public class TxtReader implements FileReader{
     private int height = 0;
     private int width = 0;
     
@@ -22,7 +22,7 @@ public class MazeTxtReader {
     
     private File file;
     
-    public MazeTxtReader(File file) {
+    public TxtReader(File file) {
         this.file = file;
         readSize();
         

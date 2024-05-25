@@ -19,21 +19,22 @@ public class MazeData {
     public static Point startPoint;
     public static Point exitPoint;
     
-    private static MazeTxtReader txtReader;
-    private static MazeBinReader binReader;
+    private static TxtReader txtReader;
+    private static BinReader binReader;
+    private static FileReader fileReader;
 
     public MazeData(File file, boolean isBin) {
         if (isBin) {
-            //change from bin to maze
-            // another class for reading bin files
+            fileReader = new BinReader();
         } else {
-            txtReader = new MazeTxtReader(file);
-            height = txtReader.getHeight();
-            width = txtReader.getWidth();
-            maze = txtReader.getMaze();
-            startPoint = txtReader.getStartPoint();
-            exitPoint = txtReader.getExitPoint();
+            fileReader = new TxtReader(file);
+
         }
+        height = fileReader.getHeight();
+        width = fileReader.getWidth();
+        maze = fileReader.getMaze();
+        startPoint = fileReader.getStartPoint();
+        exitPoint = fileReader.getExitPoint();
     }
     public static boolean isCorner(int x, int y) {
         if (x == 0 && y == 0) {
