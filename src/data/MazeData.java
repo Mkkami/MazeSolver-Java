@@ -14,13 +14,11 @@ public class MazeData {
     public static final char PATH = ' ';
     
     public static char prev_start = 'X';
-    public static char prev_end = 'X';
+    public static char prev_exit = 'X';
     
     public static Point startPoint;
     public static Point exitPoint;
     
-    private static TxtReader txtReader;
-    private static BinReader binReader;
     private static FileReader fileReader;
 
     public MazeData(File file, boolean isBin) {
@@ -65,10 +63,10 @@ public class MazeData {
     }
     
     public static void reset() {
-        startPoint = txtReader.getStartPoint();
-        exitPoint = txtReader.getExitPoint();
+        startPoint = fileReader.getStartPoint();
+        exitPoint = fileReader.getExitPoint();
         prev_start = 'X';
-        prev_end = 'X';
+        prev_exit = 'X';
     }
     
     public static char [][] getMaze() {
@@ -90,7 +88,7 @@ public class MazeData {
         if (maze[newStart.getY()][newStart.getX()] != 'K')
             prev_start = maze[newStart.getY()][newStart.getX()];
         else  {
-            prev_start = prev_end;
+            prev_start = prev_exit;
             exitPoint = null;
         }
         maze[newStart.getY()][newStart.getX()] = MazeData.START;
@@ -99,12 +97,12 @@ public class MazeData {
     
     public static void changeExitPoint(Point newExit) {
         if (exitPoint != null) {
-            maze[exitPoint.getY()][exitPoint.getX()] = prev_end;
+            maze[exitPoint.getY()][exitPoint.getX()] = prev_exit;
         }
         if (maze[newExit.getY()][newExit.getX()] != 'P')
-            prev_end = maze[newExit.getY()][newExit.getX()];
+            prev_exit = maze[newExit.getY()][newExit.getX()];
         else {
-            prev_end = prev_start;
+            prev_exit = prev_start;
             startPoint = null;
         }
         maze[newExit.getY()][newExit.getX()] = MazeData.EXIT;

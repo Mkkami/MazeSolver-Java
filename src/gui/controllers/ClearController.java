@@ -7,7 +7,7 @@ package gui.controllers;
 
 import data.MazeData;
 import data.Point;
-import gui.elements.FileInfoPanel;
+import gui.elements.InfoPanel;
 import gui.elements.MazeDisplay;
 import gui.elements.Menu;
 import java.awt.Color;
@@ -18,19 +18,18 @@ import javax.swing.JButton;
 import solver.Bfs;
 
 public class ClearController {
-    private Menu menu;
-    private FileInfoPanel filePanel;
+
+    private InfoPanel filePanel;
     private MazeDisplay mazeDisplay;
     private JButton clearButton;
     
     private boolean pathDisplayed = false;
 
-    public ClearController(Menu m, FileInfoPanel fp, MazeDisplay md) {
-        menu = m;
+    public ClearController(JButton clearButton, InfoPanel fp, MazeDisplay md) {
         filePanel = fp;
         mazeDisplay = md;
         
-        clearButton = menu.getClearButton();
+        this.clearButton = clearButton;
         
         addClearButtonListener();
     }

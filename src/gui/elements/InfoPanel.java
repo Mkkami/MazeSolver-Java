@@ -11,13 +11,13 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
 
-public class FileInfoPanel {
+public class InfoPanel {
     private final Color BackgroundColor = new Color (30, 30, 30);
     
     private JPanel infoPanel;
     private JLabel infoLabel;
 
-    public FileInfoPanel() {
+    public InfoPanel() {
         infoPanel = new JPanel();
         infoPanel.setBackground(BackgroundColor);
         infoPanel.setLayout(new BorderLayout());
@@ -40,5 +40,5 @@ public class FileInfoPanel {
         infoLabel.setText("<html>" + text + "</html>"); //html for wrapping
         infoLabel.setForeground(clr);
     }
-
+    
 }

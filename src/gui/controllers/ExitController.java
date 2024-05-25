@@ -29,11 +29,10 @@ public class ExitController {
     private JFrame frame;
     private File audioFile;
     
-    public ExitController(GUI gui, Menu menu) {
+    public ExitController(GUI gui, ExitButton exitButton) {
         this.gui = gui;
-        this.menu = menu;
         
-        this.exitButton = menu.getExitButton();
+        this.exitButton = exitButton;
         this.frame = gui.getFrame();
         this.audioFile = exitButton.getAudioFile();
         

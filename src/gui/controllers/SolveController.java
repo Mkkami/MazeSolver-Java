@@ -6,7 +6,7 @@
 package gui.controllers;
 
 import data.Point;
-import gui.elements.FileInfoPanel;
+import gui.elements.InfoPanel;
 import gui.elements.MazeDisplay;
 import gui.elements.Menu;
 import java.awt.Color;
@@ -19,21 +19,19 @@ import solver.Bfs;
 public class SolveController {
     
     
-    private Menu menu;
-    private FileInfoPanel filePanel;
+    private InfoPanel filePanel;
     private MazeDisplay mazeDisplay;
     private JButton solveButton;
     private JButton clearButton;
     
     private boolean pathDisplayed = false;
     
-    public SolveController(Menu m, FileInfoPanel fp, MazeDisplay md) {
-        menu = m;
+    public SolveController(JButton solveButton, JButton clearButton, InfoPanel fp, MazeDisplay md) {
         filePanel = fp;
         mazeDisplay = md;
         
-        solveButton = menu.getSolveButton();
-        clearButton = menu.getClearButton();
+        this.solveButton = solveButton;
+        this.clearButton = clearButton;
         
         addSolveButtonListener();
     } 

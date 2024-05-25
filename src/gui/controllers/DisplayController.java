@@ -6,7 +6,7 @@
 package gui.controllers;
 
 import data.MazeData;
-import gui.elements.FileInfoPanel;
+import gui.elements.InfoPanel;
 import gui.elements.Menu;
 import gui.elements.MazeDisplay;
 import java.awt.event.*;
@@ -19,9 +19,7 @@ import gui.GUI;
 
 public class DisplayController {
     private MazeData mazeData;
-    private GUI gui;
-    private Menu menu;
-    private FileInfoPanel filePanel;
+    private InfoPanel filePanel;
     private MazeDisplay mazeDisplay;
     
     private JButton fileButton;
@@ -31,14 +29,13 @@ public class DisplayController {
     
     private File file = null;
     
-    public DisplayController( Menu m, FileInfoPanel fp, MazeDisplay mdp) {
-        this.menu = m;
+    public DisplayController( JButton fileButton, JButton saveButton, JButton solveButton, InfoPanel fp, MazeDisplay mdp) {
         this.filePanel = fp;
         this.mazeDisplay = mdp;
         
-        this.fileButton = menu.getFileButton();
-        this.solveButton = menu.getSolveButton();
-        this.saveButton = menu.getSaveButton();
+        this.fileButton = fileButton;
+        this.solveButton = solveButton;
+        this.saveButton = saveButton;
         this.mazePanel = mazeDisplay.getDisplayPanel();
         
         addFileButtonListener();

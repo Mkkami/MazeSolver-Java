@@ -14,7 +14,7 @@ import java.awt.*;
 
 import gui.elements.Menu;
 import gui.elements.MazeDisplay;
-import gui.elements.FileInfoPanel;
+import gui.elements.InfoPanel;
 import gui.elements.ExitButton;
 import data.MazeData;
 import gui.controllers.ClearController;
@@ -33,10 +33,8 @@ public class GUI {
     private Menu menu;
     private MazeDisplay mazeDisplay;
     private MazeData mazeData;
-    private FileInfoPanel fileInfo;
+    private InfoPanel fileInfo;
     private JFrame frame;
-    
-    private DisplayController displayController;
     
     public GUI() {
         try {
@@ -57,7 +55,7 @@ public class GUI {
         
         menu = new Menu();
         mazeDisplay = new MazeDisplay();
-        fileInfo = new FileInfoPanel();
+        fileInfo = new InfoPanel();
         
         gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
@@ -88,12 +86,12 @@ public class GUI {
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayScrollPane(), gbc);
         
-        new DisplayController(menu, fileInfo, mazeDisplay);
-        new ExitController(this, menu);
-        new ImageSaveController(menu, mazeDisplay, fileInfo);
+        new DisplayController(menu.getFileButton(), menu.getSaveButton(), menu.getSolveButton(), fileInfo, mazeDisplay);
+        new ExitController(this, menu.getExitButton());
+        new ImageSaveController(menu.getSaveButton(), mazeDisplay, fileInfo);
         new MazeMouseController(mazeDisplay, fileInfo);
-        new SolveController(menu, fileInfo, mazeDisplay);
-        new ClearController(menu, fileInfo, mazeDisplay);
+        new SolveController(menu.getSolveButton(),menu.getClearButton(), fileInfo, mazeDisplay);
+        new ClearController(menu.getClearButton(), fileInfo, mazeDisplay);
               
         frame.setVisible(true);
     }

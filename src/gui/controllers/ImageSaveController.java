@@ -7,7 +7,7 @@ package gui.controllers;
 
 import java.awt.event.*;
 
-import gui.elements.FileInfoPanel;
+import gui.elements.InfoPanel;
 import gui.elements.MazeDisplay;
 import gui.elements.MazeImage;
 import gui.elements.Menu;
@@ -19,21 +19,19 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class ImageSaveController {
-    private Menu menu;
     private MazeDisplay mazeDisplay;
     private MazeImage mazeImage;
-    private FileInfoPanel filePanel;
+    private InfoPanel filePanel;
     
     private JButton saveButton;
     
     private BufferedImage mazeImg;
     
-    public ImageSaveController(Menu menu, MazeDisplay mazeDisplay, FileInfoPanel filePanel) {
-        this.menu = menu;
+    public ImageSaveController(JButton saveButton, MazeDisplay mazeDisplay, InfoPanel filePanel) {
         this.mazeDisplay = mazeDisplay;
         this.filePanel = filePanel;
         
-        this.saveButton = menu.getSaveButton();
+        this.saveButton = saveButton;
         addSaveButtonListener();
     }
     

@@ -5,7 +5,7 @@
 package gui.controllers;
 
 import data.MazeData;
-import gui.elements.FileInfoPanel;
+import gui.elements.InfoPanel;
 import gui.elements.MazeDisplay;
 import gui.elements.MazeImage;
 import data.Point;
@@ -20,12 +20,12 @@ public class MazeMouseController {
 
     private MazeImage mazeImage;
     private MazeDisplay mazeDisplay;
-    private FileInfoPanel fileInfo;
+    private InfoPanel fileInfo;
     
     private JPanel mazePanel;
     private BufferedImage mazeImg;
 
-    public MazeMouseController(MazeDisplay mazeDisplay, FileInfoPanel fileInfo) {
+    public MazeMouseController(MazeDisplay mazeDisplay, InfoPanel fileInfo) {
         this.mazeDisplay = mazeDisplay;
         this.fileInfo = fileInfo;
 
@@ -87,7 +87,7 @@ public class MazeMouseController {
             oldCell = MazeData.prev_start;
         } else {
             oldPoint = MazeData.exitPoint;
-            oldCell = MazeData.prev_end;
+            oldCell = MazeData.prev_exit;
         }
         
         if (oldPoint != null) {
