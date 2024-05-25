@@ -28,7 +28,7 @@ public class MazeDisplay {
 
     // rat img: https://www.klipartz.com/en/sticker-png-gpmbu
     private static final File IMG_FILE = new File("src/resources/rat.png");
-    private BufferedImage ratImg;
+    private static BufferedImage ratImg;
 
     private final int DEFAULT_HEIGHT = 700;
     private final int DEFAULT_WIDTH = 700;
@@ -64,8 +64,8 @@ public class MazeDisplay {
     }
     
     public void displayPath(List<Point> path) {
-        for (Point p : path) {
-            mazeImage.changeSquare(p.getX(), p.getY(), Color.red, mazeImg);
+        for (int i = 1; i < path.size()-1; i++) {
+            mazeImage.changeSquare(path.get(i).getX(), path.get(i).getY(), Color.red, mazeImg);
             displayPanel.repaint();
         }
     }
@@ -117,5 +117,9 @@ public class MazeDisplay {
 
     public void setMazeImage(BufferedImage img) {
         this.mazeImg = img;
+    }
+    
+    public static BufferedImage getRatImage() {
+        return ratImg;
     }
 }

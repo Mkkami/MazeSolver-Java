@@ -103,9 +103,7 @@ public class GUI {
     
     public void clearFrame() {
         frame.getContentPane().removeAll();
-        //frame.revalidate();
+        frame.revalidate();
         frame.repaint();
-        System.out.println("cleared frame");
-
     }
 }

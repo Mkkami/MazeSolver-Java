@@ -58,7 +58,7 @@ public class MazeMouseController {
             } else {
                 changeToPrevious(x, y, clr);
                 paintSquare(x, y, clr);
-                System.out.println("(" + x + ", " + y + ")");
+                //System.out.println("(" + x + ", " + y + ")");
             }
         } else {
             fileInfo.changeFileInfoPanel("You can't select a point outside of maze!", Color.red);

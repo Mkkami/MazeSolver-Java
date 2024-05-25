@@ -104,7 +104,6 @@ public class Bfs {
     private List<Point> createPath() {
         List<Point> path = new LinkedList<>();
         Node currentNode = exitNode;
-        System.out.println(exitNode);
         
         while (currentNode != null) {
             path.add(0, new Point(currentNode.getX(), currentNode.getY()));
@@ -112,10 +111,5 @@ public class Bfs {
         }
         
         return path;
-    }
-    
-    public static void main(String []args) {
-        boolean[] b = new boolean[2];
-        System.out.println(b[0] + " " + b[1]);
     }
 }

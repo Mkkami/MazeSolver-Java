@@ -15,6 +15,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
 import gui.GUI;
+import gui.elements.MazeDisplay;
+import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
 
 
 
@@ -51,9 +54,15 @@ public class ExitController {
     
     private void displayExit() {
         gui.clearFrame();
-        //to do
-        gui.getFrame().setVisible(false);
+        BufferedImage ratImage = MazeDisplay.getRatImage();
+        JLabel label = new JLabel(new ImageIcon(ratImage));
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(label, BorderLayout.CENTER);
+        gui.getFrame().add(panel);
+        gui.getFrame().revalidate();
+        gui.getFrame().repaint();
     }
+    
     private void runExitAudio() {
         try {
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
