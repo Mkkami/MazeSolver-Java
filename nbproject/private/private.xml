@@ -6,19 +6,25 @@
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/controllers/SolveController.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/solver/Bfs.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/solver/Node.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/elements/ExitButton.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/data/TxtReader.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/elements/InfoPanel.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/data/FileReader.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/controllers/ClearController.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/elements/MazeDisplay.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/main/Main.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/elements/TemplateButton.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/elements/Menu.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/elements/MazeImage.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/data/BinReader.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/data/MazeData.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/GUI.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/data/Point.java</file>
-            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/elements/FileInfoPanel.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/controllers/ExitController.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/controllers/MazeMouseController.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/controllers/DisplayController.java</file>
             <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/terminal/Terminal.java</file>
-            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/data/MazeBinReader.java</file>
+            <file>file:/C:/Users/micha/NetBeansProjects/JIMP/MazeSolver/src/gui/controllers/ImageSaveController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -63,8 +63,10 @@ public class MazeData {
     }
     
     public static void reset() {
-        startPoint = fileReader.getStartPoint();
-        exitPoint = fileReader.getExitPoint();
+        Point newStart = fileReader.getStartPoint();
+        Point newExit = fileReader.getExitPoint();
+        changeStartPoint(newStart);
+        changeExitPoint(newExit);
         prev_start = 'X';
         prev_exit = 'X';
     }
