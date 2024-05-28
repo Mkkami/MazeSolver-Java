@@ -70,7 +70,7 @@ public class ExitController {
             clip.open(audioIn);
             clip.start();
 
-            Thread.sleep(clip.getMicrosecondLength()/1000);
+            Thread.sleep(clip.getMicrosecondLength()/1500);
 
         } catch (InterruptedException | LineUnavailableException | UnsupportedAudioFileException | IOException  ex ){
             ex.printStackTrace();

@@ -7,7 +7,7 @@ package gui;
 
 import gui.controllers.ExitController;
 import gui.controllers.MazeMouseController;
-import gui.controllers.DisplayController;
+import gui.controllers.FileController;
 import gui.controllers.ImageSaveController;
 import javax.swing.*;
 import java.awt.*;
@@ -86,7 +86,7 @@ public class GUI {
         gbc.weighty = 1.0;
         frame.add(mazeDisplay.getDisplayScrollPane(), gbc);
         
-        new DisplayController(menu.getFileButton(), menu.getSaveButton(), menu.getSolveButton(), fileInfo, mazeDisplay);
+        new FileController(menu.getFileButton(), menu.getSaveButton(), menu.getSolveButton(), fileInfo, mazeDisplay);
         new ExitController(this, menu.getExitButton());
         new ImageSaveController(menu.getSaveButton(), mazeDisplay, fileInfo);
         new MazeMouseController(mazeDisplay, fileInfo);

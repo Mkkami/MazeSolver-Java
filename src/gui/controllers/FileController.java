@@ -17,7 +17,7 @@ import java.awt.Color;
 import java.io.File;
 import gui.GUI;
 
-public class DisplayController {
+public class FileController {
     private MazeData mazeData;
     private InfoPanel filePanel;
     private MazeDisplay mazeDisplay;
@@ -29,7 +29,7 @@ public class DisplayController {
     
     private File file = null;
     
-    public DisplayController( JButton fileButton, JButton saveButton, JButton solveButton, InfoPanel fp, MazeDisplay mdp) {
+    public FileController( JButton fileButton, JButton saveButton, JButton solveButton, InfoPanel fp, MazeDisplay mdp) {
         this.filePanel = fp;
         this.mazeDisplay = mdp;
         

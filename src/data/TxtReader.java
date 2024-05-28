@@ -52,11 +52,14 @@ public class TxtReader implements FileReader{
             while (scanner.hasNextLine()) {
                 char[] dataline = scanner.nextLine().toCharArray();
                 for (int i = 0; i < width; i++) {
-                    maze[h][i] = dataline[i];
                     if (dataline[i] == MazeData.START) {
                         startPoint = new Point(i, h);
+                        maze[h][i] = 'X';
                     } else if (dataline[i] == MazeData.EXIT) {
                         exitPoint = new Point(i, h);
+                        maze[h][i] = 'X';
+                    } else {
+                        maze[h][i] = dataline[i];
                     }
                 }
                 h++;

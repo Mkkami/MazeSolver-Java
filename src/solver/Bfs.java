@@ -49,7 +49,7 @@ public class Bfs {
         while (! queue.isEmpty()) {
             Node currentNode = queue.poll();
 
-            if (isExit(currentNode)) {
+            if (isNode(currentNode, exitNode)) {
                 exitNode = currentNode;
                 return createPath();
             }
@@ -72,7 +72,7 @@ public class Bfs {
     private boolean isCorrectCell(Node n) {
         if (!isInBounds(n))
             return false;
-        if (isWall(n))
+        if (isWall(n) && !isNode(n, startNode) && !isNode(n, exitNode))
             return false;
         if (isVisited(n))
             return false;
@@ -95,8 +95,8 @@ public class Bfs {
         return (visited[n.getY()][n.getX()]);
     }
     
-    private boolean isExit(Node n) {
-        if (n.getY() == exitNode.getY() && n.getX() == exitNode.getX())
+    private boolean isNode(Node n, Node o) {
+        if (n.equals(o))
             return true;
         return false;
     }

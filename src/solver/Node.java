@@ -32,4 +32,11 @@ public class Node {
     public String toString() {
         return "(" + x + ", " + y + ")";
     }
+    
+    public boolean equals(Node n) {
+        if (n.getX() == x && n.getY() == y) {
+            return true;
+        }
+        return false;
+    }
 }

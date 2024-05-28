@@ -5,6 +5,7 @@
 package gui.elements;
 
 import data.MazeData;
+import data.Point;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -28,16 +29,17 @@ public class MazeImage {
                     g2d.setColor(Color.BLACK);
                 } else if (cellType == MazeData.PATH) {
                     g2d.setColor(Color.WHITE);
-                } else if (cellType == MazeData.EXIT) {
-                    g2d.setColor(Color.BLUE);
-                } else if (cellType == MazeData.START) {
-                    g2d.setColor(Color.GREEN);
                 }
                 int x = j * rectSize;
                 int y = i * rectSize;
                 g2d.fillRect(x, y, rectSize, rectSize);
             }
         }
+        Point point = MazeData.startPoint;
+        changeSquare(point.getX(), point.getY(), Color.GREEN, mazeImg);
+        point = MazeData.exitPoint;
+        changeSquare(point.getX(), point.getY(), Color.BLUE, mazeImg);
+        
         g2d.dispose();
         return mazeImg;
     }
