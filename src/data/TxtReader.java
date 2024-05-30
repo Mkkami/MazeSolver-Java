@@ -88,4 +88,9 @@ public class TxtReader implements FileReader{
     public Point getExitPoint() {
         return exitPoint;
     }
+
+    @Override
+    public String getFilename() {
+        return file.getAbsolutePath();
+    }
 }

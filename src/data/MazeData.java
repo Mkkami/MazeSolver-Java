@@ -3,6 +3,8 @@ package data;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import observer.Observer;
 import observer.Subject;
 
@@ -20,6 +22,8 @@ public class MazeData implements Subject{
     public static Point exitPoint;
     
     private static FileReader fileReader;
+    
+    private List<Observer> observers = new ArrayList<>();
 
     public MazeData(File file, boolean isBin) {
         if (isBin) {
@@ -121,19 +125,18 @@ public class MazeData implements Subject{
 
     @Override
     public void addObserver(Observer o) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        observers.add(o);
     }
 
     @Override
     public void removeObserver(Observer o) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        observers.remove(o);
     }
 
     @Override
     public void notifyObservers() {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (Observer observer : observers) {
+            observer.update(fileReader.getFilename());
+        }
     }
 }

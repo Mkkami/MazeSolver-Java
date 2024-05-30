@@ -10,4 +10,4 @@ mkdir $OUT_DIR
 
 javac -d $OUT_DIR $(find $SRC_DIR -name "*.java")
 
-java -cp "$OUT_DIR" $MAIN_CLASS
+java -cp "$OUT_DIR" $MAIN_CLASS siema siema

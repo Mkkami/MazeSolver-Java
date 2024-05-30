@@ -11,6 +11,7 @@ import gui.controllers.FileController;
 import gui.controllers.ImageSaveController;
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 import gui.elements.Menu;
 import gui.elements.MazeDisplay;
@@ -19,6 +20,9 @@ import data.MazeData;
 import gui.controllers.ClearController;
 import gui.controllers.SolveController;
 import observer.Observer;
+import solver.Bfs;
+import data.Point;
+import gui.elements.MazeImage;
 
 public class GUI implements Observer{
         //16:9
@@ -35,6 +39,16 @@ public class GUI implements Observer{
     private JFrame frame;
     
     public GUI() {
+        initGUI();
+    }
+    
+    public GUI(MazeData mazeData) {
+        this.mazeData = mazeData;
+        initGUI();
+        solveAndDisplay();
+    }
+    
+    private void initGUI() {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             UIManager.put("nimbusBase", darkBackground); 
@@ -93,6 +107,26 @@ public class GUI implements Observer{
               
         frame.setVisible(true);
     }
+    
+    private void solveAndDisplay() {
+        try {
+            mazeDisplay.setMazeData(mazeData);
+            Bfs bfs = new Bfs();
+            List<Point> path = bfs.solve();
+            if (path == null) {
+                fileInfo.changeFileInfoPanel("No path found.", Color.RED);
+                menu.getSolveButton().setEnabled(true);
+            } else {
+                mazeDisplay.displayPath(path);
+                fileInfo.changeFileInfoPanel("Maze solved", Color.GREEN);
+                menu.getSolveButton().setEnabled(true);
+                menu.getClearButton().setEnabled(true);
+            }
+        } catch (NullPointerException ex) {
+            fileInfo.changeFileInfoPanel("Select start and end point", Color.RED);
+        }
+    }
+    
     public JFrame getFrame() {
         return frame;
     }

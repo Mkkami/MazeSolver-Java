@@ -14,4 +14,5 @@ public interface FileReader {
     int getWidth();
     Point getStartPoint();
     Point getExitPoint();
+    String getFilename();
 }
