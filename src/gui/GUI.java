@@ -15,14 +15,12 @@ import java.awt.*;
 import gui.elements.Menu;
 import gui.elements.MazeDisplay;
 import gui.elements.InfoPanel;
-import gui.elements.ExitButton;
 import data.MazeData;
 import gui.controllers.ClearController;
 import gui.controllers.SolveController;
-import gui.elements.MazeImage;
+import observer.Observer;
 
-
-public class GUI {
+public class GUI implements Observer{
         //16:9
     private final int FRAMEWIDTH = 1600;
     private final int FRAMEHEIGHT = (int)FRAMEWIDTH/16 * 9;
@@ -103,5 +101,11 @@ public class GUI {
         frame.getContentPane().removeAll();
         frame.revalidate();
         frame.repaint();
+    }
+
+    @Override
+    public void update(String filename) {
+        throw new UnsupportedOperationException("Not supported yet.");
+        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

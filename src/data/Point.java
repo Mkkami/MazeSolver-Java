@@ -32,9 +32,12 @@ public class Point {
         return "(" + x + ", " + y + ")";
     }
     
-    public boolean equals(Point p) {
-        if (p.getX() == x && p.getY() == y) {
-            return true;
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Point && o != null) {
+            if (((Point) o).getX() == x && ((Point) o).getY() == y) {
+                return true;
+            }
         }
         return false;
     }

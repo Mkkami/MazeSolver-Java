@@ -7,9 +7,13 @@ package main;
 
 import gui.GUI;
 import javax.swing.SwingUtilities;
+import observer.Terminal;
 
 public class Main {
     public static void main(String [] args) {
+        if (args.length > 1) {
+            new Terminal();
+        }
         SwingUtilities.invokeLater(() -> {
             GUI gui = new GUI();
         });

@@ -1,9 +1,12 @@
 
 package data;
 
+import java.awt.Color;
 import java.io.File;
+import observer.Observer;
+import observer.Subject;
 
-public class MazeData {
+public class MazeData implements Subject{
     private static int height;
     private static int width;
     private static char [][] maze;
@@ -13,9 +16,6 @@ public class MazeData {
     public static final char WALL = 'X';
     public static final char PATH = ' ';
     
-    public static char prev_start = 'X';
-    public static char prev_exit = 'X';
-    
     public static Point startPoint;
     public static Point exitPoint;
     
@@ -23,7 +23,7 @@ public class MazeData {
 
     public MazeData(File file, boolean isBin) {
         if (isBin) {
-            fileReader = new BinReader();
+            fileReader = new BinReader(file);
         } else {
             fileReader = new TxtReader(file);
 
@@ -67,8 +67,6 @@ public class MazeData {
         Point newExit = fileReader.getExitPoint();
         changeStartPoint(newStart);
         changeExitPoint(newExit);
-        prev_start = 'X';
-        prev_exit = 'X';
     }
     
     public static char [][] getMaze() {
@@ -84,10 +82,12 @@ public class MazeData {
     }
     
     public static void changeStartPoint(Point newStart) {
+        if (startPoint != null)
+            
+            if (newStart.equals(exitPoint)) {
+                exitPoint = null;
+            }
         startPoint = newStart;
-        if (startPoint.equals(exitPoint)) {
-            exitPoint = null;
-        }
     }
     
     public static void changeExitPoint(Point newExit) {
@@ -95,5 +95,45 @@ public class MazeData {
         if (startPoint.equals(exitPoint)) {
             startPoint = null;
         }
+    }
+    
+    public static Color getCellTypeColor(int x, int y) {
+        switch (maze[y][x]) {
+            case 'X':
+                return Color.BLACK;
+            case ' ':
+                return Color.WHITE;
+            default:
+                return Color.BLACK;
+        }
+    }
+    
+    public static Color getCellTypeColor(Point p) {
+        switch (maze[p.getY()][p.getX()]) {
+             case 'X':
+                return Color.BLACK;
+            case ' ':
+                return Color.WHITE;
+            default:
+                return Color.BLACK;
+        }
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        throw new UnsupportedOperationException("Not supported yet.");
+        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        throw new UnsupportedOperationException("Not supported yet.");
+        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void notifyObservers() {
+        throw new UnsupportedOperationException("Not supported yet.");
+        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

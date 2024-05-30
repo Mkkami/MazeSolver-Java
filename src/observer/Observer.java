@@ -6,5 +6,5 @@
 package observer;
 
 public interface Observer {
-    public void update(String filename);
+    public void update(String filepath);
 }

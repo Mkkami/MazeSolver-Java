@@ -17,28 +17,25 @@ public class MazeImage {
 
     private static int rectSize = 10;
 
-    public BufferedImage generateMazeImage(int rows, int cols, char[][] maze) {
+    public BufferedImage generateMazeImage(int rows, int cols) {
 
         mazeImg = new BufferedImage(cols * rectSize, rows * rectSize, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = mazeImg.createGraphics();
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                int cellType = maze[i][j];
-                if (cellType == MazeData.WALL) {
-                    g2d.setColor(Color.BLACK);
-                } else if (cellType == MazeData.PATH) {
-                    g2d.setColor(Color.WHITE);
-                }
+                g2d.setColor(MazeData.getCellTypeColor(j, i));
                 int x = j * rectSize;
                 int y = i * rectSize;
                 g2d.fillRect(x, y, rectSize, rectSize);
             }
         }
         Point point = MazeData.startPoint;
-        changeSquare(point.getX(), point.getY(), Color.GREEN, mazeImg);
+        if (point != null)
+            changeSquare(point.getX(), point.getY(), Color.GREEN, mazeImg);
         point = MazeData.exitPoint;
-        changeSquare(point.getX(), point.getY(), Color.BLUE, mazeImg);
+        if (point != null)
+            changeSquare(point.getX(), point.getY(), Color.BLUE, mazeImg);
         
         g2d.dispose();
         return mazeImg;

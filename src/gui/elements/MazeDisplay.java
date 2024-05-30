@@ -82,7 +82,7 @@ public class MazeDisplay {
         int mHeight = mazeData.getHeight();
         displayPanel.setPreferredSize(new Dimension(mWidth * MazeImage.getRectSize(), mHeight * MazeImage.getRectSize()));
 
-        mazeImg = new MazeImage().generateMazeImage(mWidth, mHeight, mazeData.getMaze());
+        mazeImg = new MazeImage().generateMazeImage(mWidth, mHeight);
         originalMazeImg = copyImage(mazeImg);
     }
     private BufferedImage copyImage(BufferedImage img) {

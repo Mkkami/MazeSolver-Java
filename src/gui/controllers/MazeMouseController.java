@@ -84,26 +84,16 @@ public class MazeMouseController {
         char oldCell;
         if (clr == Color.GREEN) { //start
             oldPoint = MazeData.startPoint;
-            oldCell = MazeData.prev_start;
+            oldCell = MazeData.getMaze()[MazeData.startPoint.getY()][MazeData.startPoint.getX()];
         } else {
             oldPoint = MazeData.exitPoint;
-            oldCell = MazeData.prev_exit;
+            oldCell = MazeData.getMaze()[MazeData.exitPoint.getY()][MazeData.exitPoint.getX()];
         }
         
         if (oldPoint != null) {
-            switch (oldCell) {
-                case MazeData.WALL:
-                    oldColor = Color.BLACK;
-                    break;
-                case MazeData.PATH:
-                    oldColor = Color.WHITE;
-                    break;
-                default:
-                    oldColor = Color.RED;
-                    System.err.println("how did you get there");
-            }
+            oldColor = MazeData.getCellTypeColor(oldPoint);
             paintSquare(oldPoint.getX(), oldPoint.getY(), oldColor);
-        }        
+        }
     }
     private void changeToPrevious(int x, int y, Color clr) {
         changePreviousCellColor(clr);

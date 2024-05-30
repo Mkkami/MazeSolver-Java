@@ -7,9 +7,9 @@ package observer;
 
 public interface Subject {
     
-    public void addObserver();
+    public void addObserver(Observer o);
     
-    public void removeObserver();
+    public void removeObserver(Observer o);
     
     public void notifyObservers();
 }
