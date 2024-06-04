@@ -11,8 +11,8 @@ import observer.Terminal;
 
 public class Main {
     public static void main(String [] args) {
-        if (args.length > 1) {
-            new Terminal();
+        if (args.length == 1) {
+            new Terminal(args[0]);
         }
         SwingUtilities.invokeLater(() -> {
             GUI gui = new GUI();

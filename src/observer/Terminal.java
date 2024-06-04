@@ -21,7 +21,8 @@ public class Terminal implements Observer{
     
     private boolean fileRead = false;
     
-    public Terminal() {
+    public Terminal(String filename) {
+        processFile(filename);
         readCommands();
     }
     
@@ -49,7 +50,7 @@ public class Terminal implements Observer{
             } else if (command.equalsIgnoreCase("show")) {
                 showGUI();
             } else {
-                System.out.println(command + " command does not exist. Use 'file' or 'exit'.");
+                System.out.println(command + " command does not exist. Use 'file', 'show' or 'exit'.");
             }
             
         }
