@@ -58,6 +58,8 @@ public class MazeMouseController {
             } else {
                 changeToPrevious(x, y, clr);
                 paintSquare(x, y, clr);
+
+                
                 //System.out.println("(" + x + ", " + y + ")");
             }
         } else {
@@ -82,12 +84,21 @@ public class MazeMouseController {
         Point oldPoint;
         Color oldColor;
         char oldCell;
-        if (clr == Color.GREEN) { //start
+        if (clr == Color.GREEN) { //start - left click
             oldPoint = MazeData.startPoint;
-            oldCell = MazeData.getMaze()[MazeData.startPoint.getY()][MazeData.startPoint.getX()];
-        } else {
+            try {
+                oldCell = MazeData.getMaze()[MazeData.startPoint.getY()][MazeData.startPoint.getX()];
+            } catch (Exception ex) {
+                // non existent start point - replaced by end
+            }
+        } else {                  //end - right click
             oldPoint = MazeData.exitPoint;
-            oldCell = MazeData.getMaze()[MazeData.exitPoint.getY()][MazeData.exitPoint.getX()];
+            try {
+                oldCell = MazeData.getMaze()[MazeData.exitPoint.getY()][MazeData.exitPoint.getX()];
+            } catch (Exception ex) {
+                // non existent end point - replaced by start
+            }
+            
         }
         
         if (oldPoint != null) {
